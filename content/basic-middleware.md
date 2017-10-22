@@ -5,10 +5,10 @@ description = "This example will show how to create basic logging middleware in 
 +++
 
 # Middleware (Basic)
+这个例子将展示在Go中创建基本的日志中间件.
 
-This example will show how to create basic logging middleware in Go.
 
-A middleware simply takes a `http.HandlerFunc` as one of its parameters, wraps it and returns a new `http.HandlerFunc` for the server to call.
+这个例子将展示如何在GO中创建基本的日志中间件。一个中间件只需要一个`http.HandlerFunc` 作为它其中的一个参数，装饰它，并返回一个新的`http.HandlerFunc`用于服务器调用
 
 {{< edison >}}
 

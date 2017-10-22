@@ -6,11 +6,11 @@ description = "This example will show how to store data in session cookies using
 
 # Sessions
 
-This example will show how to store data in session cookies using the popular  <a target="_blank" href="https://github.com/gorilla/sessions">gorilla/sessions</a> package in Go.
+这个例子将会展示如何通过流行的 <a target="_blank" href="https://github.com/gorilla/sessions">gorilla/sessions</a> 会话 cookies.
 
-Cookies are small pieces of data stored in the browser of a user and are sent to our server on each request. In them, we can store e.g. whether or not a user is logged in into our website and figure out who he actually is (in our system).
+cookie 是存储在用户浏览器中的小数据，并在每次请求时发送到服务器。在它们中，我们可以存储用户是否登录到我们的网站，并找出它时间上是谁（在我们系统中.
 
-In this example we will only allow authenticated users to view our secret message on the `/secret` page. To get access to it, the will first have to visit `/login` to get a valid session cookie, which logs him in. Additionally he can visit `/logout` to revoke his access to our secret message.
+在本例中，我们只允许经过身份验证在`/secret` 页上查看隐私的信息。要访问它，首先要访问`/login`得到有效的会话cookie.此外，他可以访问`/logout` 来注销我们访问私密信息的权限.
 
 {{< edison >}}
 

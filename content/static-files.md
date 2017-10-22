@@ -6,7 +6,7 @@ description = "This example will show how to serve static files like CSS or JS f
 
 # Assets and Files
 
-This example will show how to serve static files like CSSs, JavaScripts or images from a specific directory.
+这个例子将展示如何使用静态文件比如CSS、 JavaScripts或图片.
 
 {{< edison >}}
 

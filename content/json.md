@@ -6,7 +6,7 @@ description = "This example will show how to encode and decode JSON data using t
 
 # JSON
 
-This example will show how to encode and decode JSON data using the `encoding/json` package.
+本例将展示如何使用encoding/json包来编码和解码 JSON文件的.
 
 {{< edison >}}
 

@@ -7,18 +7,12 @@ description = "This example shows how to use the `gorilla/mux` package to create
 # Templates
 
 ## Introduction
-Go's `html/template` package provides a rich templating language for HTML templates.
-It is mostly used in web applications to display data in a structured way in a client's browser.
-One great benefit of Go's templating language is the automatic escaping of data.
-There is no need to worry about about XSS attacks as Go parses the HTML template and escapes all inputs before displaying it to the browser.
+Go 的`html/template`包对HTML模板提供了丰富的模板语言。它主要用于Web应用程序，在客户端的浏览中以结构化的方式显示数据。Go 模板语言最大的好处就是数据的自动转义。没有必要担心在显示浏览器之前，那些作为GO解析HTML模板的XSS攻击和避开所有输入.
 
 {{< edison >}}
 
 ## First Template
-Writing a template in Go is very simple. This example shows a TODO list, written as an unordered list (ul) in HTML.
-When rendering templates, the data passed in can be any kind of Go's data structures. It may be a simple string or a number,
-it can even be nested data structure as in the example below. To access the data in a template the top most variable is access by `{{.}}`.
-The dot inside the curly braces is called the pipeline and the root element of the data.
+GO写一个模板非常简单。这个例子展示一个TODO 列表, 用HTML中的无序列表 （ul）来写， 当渲染模板时， 可以从GO的各种数据结构中导入。它可以是简单的string 或 数字， 它甚至可以是嵌套的数据结构。要访问模板中的数据，最前的变量是通过{{. }} 来访问。其中 花括号中的点(.) 称为管道和root.
 
 {{< highlight go >}}
 data := TodoPageData{
@@ -44,8 +38,7 @@ data := TodoPageData{
 {{< / highlight >}}
 
 ## Control Structures
-The templating language contains a rich set of control structures to render your HTML. Here you will get an overview of the most commonly used ones.
-To get a detailed list of all possible structures visit: <a target="_blank" href="https://golang.org/pkg/text/template/#hdr-Actions">text/template</a>
+模板语言包含一组丰富的控制结构来渲染HTML.这里你将会看到一些最常用的。更详细的清单访问: <a target="_blank" href="https://golang.org/pkg/text/template/#hdr-Actions">text/template</a>
 
 Control Structure | Definition
 ---|---
@@ -57,9 +50,7 @@ Control Structure | Definition
 `{{block "content" .}} {{end}}` | Defines a block with the name "content"
 
 ## Parsing Templates from Files
-Template can either be parsed from a string or a file on disk.
-As it is usually the case, that templates are pares from disk, this example shows how to do so.
-In this example there is a template file in the same directory as the Go program called `layout.html`.
+模板可以是从一个字符串或者磁盘上的文件解析。通常下，模板是来自磁盘。这个example 展示了如何来操作。在这个例子，下面GO程序中，有一个模板名字为`layout.html`.
 
 {{< highlight go >}}
 tmpl, err := template.ParseFiles("layout.html")
@@ -68,9 +59,7 @@ tmpl := template.Must(template.ParseFiles("layout.html"))
 {{< / highlight >}}
 
 ## Execute a Template in a Request Handler
-Once the template is parsed from disk it's ready to be used in the request handler.
-The `Execute` function accepts an `io.Writer` for writing out the template and an `interface{}` to pass data into the template.
-When the function is called on an `http.ResponseWriter` the Content-Type is header is automatically set in the HTTP response to `Content-Type: text/html; charset=utf-8`.
+模板从磁盘解析后，就可以在请求处理程序中使用它。`Execute ` 函数接受一个写入模板的`io.Writer`和一个将数据传递到模板中的 interface {} 。当被一个http.ResponseWriter 调用时. Header的Content-Type中的`Content-Type: text/html; charset=utf-8` 是被自动设置在HTTP 响应文中.
 
 {{< highlight go >}}
 func(w http.ResponseWriter, r *http.Request) {
@@ -79,7 +68,7 @@ func(w http.ResponseWriter, r *http.Request) {
 {{< / highlight >}}
 
 ## The Code (for copy/paste)
-This is the complete code that you can use to try out the things you've learned in this example.
+下面是全部代码.
 {{< highlight go >}}
 package main
 

@@ -16,8 +16,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/hello-world/</guid>
-      <description>Hello World Introduction Go is a battery included programming language and has a webserver already built in. The net/http package from the standard library contains all functionalities about the HTTP protocol. This includes (among many other things) an HTTP client and an HTTP server. In this example you will figure out how simple it is, to create a webserver that you can view in your browser.
-(adsbygoogle = window.</description>
+      <description>Hello World Introduction Go 是一个自带干粮的编程语言，拥有自己的内置webserver.标准库中的net/http 包包含了关于HTTP协议的全部功能的函数。包中包含了一个HTTP client和 一个HTTP server . 在本例子中你将会发现成功创建一个你可以在浏览器中浏览网页的webserver是有多么简单。
+   (adsbygoogle = window.adsbygoogle || []).push({});  Registering a Request Handler 首先，创建一个从浏览器接受进来的HTTP链接、HTTP client 或者API请求的Handler， 在Go 中是一个函数，它在创建的时候，形态上有如下相似特点: func (w http.ResponseWriter, r *http.Request) 这个函数接受两个参数:
+ http.ResponseWriter: 这个参数是给你写你的text/html响应的 http.Request : 它包含所有HTTP请求的信息，比如URL 或者 header  注册一个的HTTP Server 的request handler 非常简单，如下就是: http.HandleFunc(&#34;/&#34;, func (w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, &#34;Hello, you&#39;ve requested: %s\n&#34;, r.URL.Path) }) Listen for HTTP Connections 一个单独的request handler 不能接受任何外部的HTTP 链接。一个HTTP Server, 为了把链接发送给request handle， 它必须监听一个端口。由于80端口是大多数默认的HTTP 流量通道， 所以本server 也会用80端口来监控。下面的代码会启动一个GO的默认HTTP server ,同时监听80端口上的链接。你可以在你的浏览器中访问 http://localhost/, 同时可以看到你的server 正在处理你的request http.</description>
     </item>
     
     <item>
@@ -26,7 +27,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/routes-using-gorilla-mux/</guid>
-      <description>Routing (using gorilla/mux) Introduction Go&amp;rsquo;s net/http package provides a lot of functionalities for the HTTP protocol. One thing it doesn&amp;rsquo;t do very well is complex request routing like segmenting a request url into single parameters. Fortunately there is a very popular package for this, which is well known for the good code quality in the Go community. In this example you will see how to use the gorilla/mux package to create routes with named parameters, GET/POST handlers and domain restrictions.</description>
+      <description>Routing (using gorilla/mux) Introduction Go 的net/http 包提供了许多HTTP协议功能的函数。有一件事件，它还做的不够好，比如对于复杂的请求路由把请求的url分割成单个参数。幸运的是，在Go的社区里，有一个非常流行的package 来解决这个问题。在本例中，你将会看到如何用 gorilla/mux以命名参数、GET/POST Hander 和域名限制的形式来创建路由
+   (adsbygoogle = window.adsbygoogle || []).push({});  Installing the gorilla/mux package gorilla/mux 在写web 应用时，它带来了许多特性来提升生产效率。它在创建的时候，形态上和GO原始创建request handler 在创建形式上相似:func (w http.ResponseWriter, r *http.Request).所以这个包可以和其他HTTP 库混合使用，比如middleware 或已经存在的应用。通过 go get从 Github 上下载安装: go get -u github.com/gorilla/mux Creating a new Router 首先创建一个新的路由。对于你的web应用，这个路由是主路由，它会传递参数到你的server.它会接受所有的HTTP链接，同时发送到你注册的request handler 上。你可以像下面一下创建: r := mux.NewRouter() Registering a Request Handler 当你已经创建了一个路由，你可以像内置包那样注册request handler.唯一不同的是，调用 http.HandleFunc(...)时，你可以用r.HandleFunc(...) 来代替.
+URL Parameters gorilla/mux 路由最具有能量的地方是从请求的URL上提取信息。作为一个例子，比如下面是你应用的URL: /books/go-programming-blueprint/page/10 这个URL有两个动态部分:
+ Book 的标题(go-programming-blueprint) 页数 (10)  对于上面提到的URL,在处理request handler时， 你可以如下处理，来做动态参数处理: r.</description>
     </item>
     
     <item>
@@ -35,7 +39,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/templates/</guid>
-      <description>Templates Introduction Go&amp;rsquo;s html/template package provides a rich templating language for HTML templates. It is mostly used in web applications to display data in a structured way in a client&amp;rsquo;s browser. One great benefit of Go&amp;rsquo;s templating language is the automatic escaping of data. There is no need to worry about about XSS attacks as Go parses the HTML template and escapes all inputs before displaying it to the browser.</description>
+      <description>Templates Introduction Go 的html/template包对HTML模板提供了丰富的模板语言。它主要用于Web应用程序，在客户端的浏览中以结构化的方式显示数据。Go 模板语言最大的好处就是数据的自动转义。没有必要担心在显示浏览器之前，那些作为GO解析HTML模板的XSS攻击和避开所有输入.
+   (adsbygoogle = window.adsbygoogle || []).push({});  First Template GO写一个模板非常简单。这个例子展示一个TODO 列表, 用HTML中的无序列表 （ul）来写， 当渲染模板时， 可以从GO的各种数据结构中导入。它可以是简单的string 或 数字， 它甚至可以是嵌套的数据结构。要访问模板中的数据，最前的变量是通过{{. }} 来访问。其中 花括号中的点(.) 称为管道和root.
+ data := TodoPageData{ PageTitle: &#34;My TODO list&#34;, Todos: []Todo{ {Title: &#34;Task 1&#34;, Done: false}, {Title: &#34;Task 2&#34;, Done: true}, {Title: &#34;Task 3&#34;, Done: true}, }, } {{.PageTitle}}  {{range .Todos}} {{if .Done}} {{.Title}} {{else}} {{.Title}} {{end}} {{end}}  Control Structures 模板语言包含一组丰富的控制结构来渲染HTML.</description>
     </item>
     
     <item>
@@ -44,8 +50,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/static-files/</guid>
-      <description> Assets and Files This example will show how to serve static files like CSSs, JavaScripts or images from a specific directory.
-(adsbygoogle = window.adsbygoogle || []).push({});// static-files.go package main import &amp;quot;net/http&amp;quot; func main() { fs := http.FileServer(http.Dir(&amp;quot;assets/&amp;quot;)) http.Handle(&amp;quot;/static/&amp;quot;, http.StripPrefix(&amp;quot;/static/&amp;quot;, fs)) http.ListenAndServe(&amp;quot;:8080&amp;quot;, nil) }  $ tree assets/ assets/ └── css └── styles.css  $ go run static-files.go $ curl -s http://localhost:8080/static/css/styles.css body { background-color: black; }  </description>
+      <description> Assets and Files 这个例子将展示如何使用静态文件比如CSS、 JavaScripts或图片.
+   (adsbygoogle = window.adsbygoogle || []).push({});   // static-files.go package main import &#34;net/http&#34; func main() { fs := http.FileServer(http.Dir(&#34;assets/&#34;)) http.Handle(&#34;/static/&#34;, http.StripPrefix(&#34;/static/&#34;, fs)) http.ListenAndServe(&#34;:8080&#34;, nil) } $ tree assets/ assets/ └── css └── styles.css $ go run static-files.go $ curl -s http://localhost:8080/static/css/styles.css body { background-color: black; } </description>
     </item>
     
     <item>
@@ -54,8 +60,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/forms/</guid>
-      <description>Forms This example will show how to simulate a contact form and parse the message into a struct.
-(adsbygoogle = window.adsbygoogle || []).push({});// forms.go package main import ( &amp;quot;html/template&amp;quot; &amp;quot;net/http&amp;quot; ) type ContactDetails struct { Email string Subject string Message string } func main() { tmpl := template.Must(template.ParseFiles(&amp;quot;forms.html&amp;quot;)) http.HandleFunc(&amp;quot;/&amp;quot;, func(w http.ResponseWriter, r *http.Request) { if r.Method != http.MethodPost { tmpl.Execute(w, nil) return } details := ContactDetails{ Email: r.</description>
+      <description>Forms 这个例子将演示如何模拟联系人表单并将其解析到结构体中.
+   (adsbygoogle = window.adsbygoogle || []).push({});   // forms.go package main import ( &#34;html/template&#34; &#34;net/http&#34; ) type ContactDetails struct { Email string Subject string Message string } func main() { tmpl := template.Must(template.ParseFiles(&#34;forms.html&#34;)) http.HandleFunc(&#34;/&#34;, func(w http.ResponseWriter, r *http.Request) { if r.Method != http.MethodPost { tmpl.Execute(w, nil) return } details := ContactDetails{ Email: r.FormValue(&#34;email&#34;), Subject: r.FormValue(&#34;subject&#34;), Message: r.FormValue(&#34;message&#34;), } // do something with details _ = details tmpl.</description>
     </item>
     
     <item>
@@ -64,9 +70,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/basic-middleware/</guid>
-      <description>Middleware (Basic) This example will show how to create basic logging middleware in Go.
-A middleware simply takes a http.HandlerFunc as one of its parameters, wraps it and returns a new http.HandlerFunc for the server to call.
-(adsbygoogle = window.adsbygoogle || []).push({});// basic-middleware.go package main import ( &amp;quot;fmt&amp;quot; &amp;quot;log&amp;quot; &amp;quot;net/http&amp;quot; ) func logging(f http.HandlerFunc) http.HandlerFunc { return func(w http.ResponseWriter, r *http.Request) { log.Println(r.URL.Path) f(w, r) } } func foo(w http.</description>
+      <description>Middleware (Basic) 这个例子将展示在Go中创建基本的日志中间件.
+这个例子将展示如何在GO中创建基本的日志中间件。一个中间件只需要一个http.HandlerFunc 作为它其中的一个参数，装饰它，并返回一个新的http.HandlerFunc用于服务器调用
+   (adsbygoogle = window.adsbygoogle || []).push({});   // basic-middleware.go package main import ( &#34;fmt&#34; &#34;log&#34; &#34;net/http&#34; ) func logging(f http.HandlerFunc) http.HandlerFunc { return func(w http.ResponseWriter, r *http.Request) { log.Println(r.URL.Path) f(w, r) } } func foo(w http.ResponseWriter, r *http.Request) { fmt.Fprintln(w, &#34;foo&#34;) } func bar(w http.ResponseWriter, r *http.Request) { fmt.Fprintln(w, &#34;bar&#34;) } func main() { http.HandleFunc(&#34;/foo&#34;, logging(foo)) http.HandleFunc(&#34;/bar&#34;, logging(bar)) http.ListenAndServe(&#34;:8080&#34;, nil) } $ go run basic-middleware.</description>
     </item>
     
     <item>
@@ -75,9 +81,10 @@ A middleware simply takes a http.HandlerFunc as one of its parameters, wraps it 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/advanced-middleware/</guid>
-      <description>Middleware (Advanced) This example will show how to create a more advanced version of middleware in Go.
-A middleware in itself simply takes a http.HandlerFunc as one of its parameters, wraps it and returns a new http.HandlerFunc for the server to call.
-Here we define a new type Middleware which makes it eventually easier to chain multiple middlewares together. This idea is inspired by Mat Ryers&amp;rsquo; talk about Building APIs.</description>
+      <description>Middleware (Advanced) 这个例子将展示如何在GO中创建更高级的中间件。一个中间件只需要一个http.HandlerFunc 作为它的一个参数，装饰它并把它作为一个新的 http.HandlerFunc 给服务器调用.
+在这里，我们定义一个新的类型Middleware, 它可以更容易的链接多个中间件。这个想法灵感来自于Mat Ryer 谈论如果建立APIs. 你可以从 这里查看更详细的内容.
+   (adsbygoogle = window.adsbygoogle || []).push({});  
+这个片段详细展示了如何创建一个新的中间件。此处下面是完整的例子，这里我们减少了一些样板代码. func createNewMiddleware() Middleware { // Create a new Middleware middleware := func(next http.HandlerFunc) http.HandlerFunc { // Define the http.HandlerFunc which is called by the server eventually handler := func(w http.ResponseWriter, r *http.Request) { // ... do middleware things // Call the next middleware/handler in chain next(w, r) } // Return newly created handler return handler } // Return newly created middleware return middleware } 下面是完整的例子: // advanced-middleware.</description>
     </item>
     
     <item>
@@ -86,9 +93,10 @@ Here we define a new type Middleware which makes it eventually easier to chain m
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/sessions/</guid>
-      <description>Sessions This example will show how to store data in session cookies using the popular gorilla/sessions package in Go.
-Cookies are small pieces of data stored in the browser of a user and are sent to our server on each request. In them, we can store e.g. whether or not a user is logged in into our website and figure out who he actually is (in our system).
-In this example we will only allow authenticated users to view our secret message on the /secret page.</description>
+      <description>Sessions 这个例子将会展示如何通过流行的 gorilla/sessions 会话 cookies.
+cookie 是存储在用户浏览器中的小数据，并在每次请求时发送到服务器。在它们中，我们可以存储用户是否登录到我们的网站，并找出它时间上是谁（在我们系统中.
+在本例中，我们只允许经过身份验证在/secret 页上查看隐私的信息。要访问它，首先要访问/login得到有效的会话cookie.此外，他可以访问/logout 来注销我们访问私密信息的权限.
+   (adsbygoogle = window.adsbygoogle || []).push({});   // sessions.go package main import ( &#34;fmt&#34; &#34;net/http&#34; &#34;github.com/gorilla/sessions&#34; ) var ( // key must be 16, 24 or 32 bytes long (AES-128, AES-192 or AES-256) key = []byte(&#34;super-secret-key&#34;) store = sessions.NewCookieStore(key) ) func secret(w http.ResponseWriter, r *http.Request) { session, _ := store.Get(r, &#34;cookie-name&#34;) // Check if user is authenticated if auth, ok := session.</description>
     </item>
     
     <item>
@@ -97,8 +105,8 @@ In this example we will only allow authenticated users to view our secret messag
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/json/</guid>
-      <description>JSON This example will show how to encode and decode JSON data using the encoding/json package.
-(adsbygoogle = window.adsbygoogle || []).push({});// json.go package main import ( &amp;quot;encoding/json&amp;quot; &amp;quot;fmt&amp;quot; &amp;quot;net/http&amp;quot; ) type User struct { Firstname string `json:&amp;quot;firstname&amp;quot;` Lastname string `json:&amp;quot;lastname&amp;quot;` Age int `json:&amp;quot;age&amp;quot;` } func main() { http.HandleFunc(&amp;quot;/decode&amp;quot;, func(w http.ResponseWriter, r *http.Request) { var user User json.NewDecoder(r.Body).Decode(&amp;amp;user) fmt.Fprintf(w, &amp;quot;%s %s is %d years old!&amp;quot;, user.</description>
+      <description>JSON 本例将展示如何使用encoding/json包来编码和解码 JSON文件的.
+   (adsbygoogle = window.adsbygoogle || []).push({});   // json.go package main import ( &#34;encoding/json&#34; &#34;fmt&#34; &#34;net/http&#34; ) type User struct { Firstname string `json:&#34;firstname&#34;` Lastname string `json:&#34;lastname&#34;` Age int `json:&#34;age&#34;` } func main() { http.HandleFunc(&#34;/decode&#34;, func(w http.ResponseWriter, r *http.Request) { var user User json.NewDecoder(r.Body).Decode(&amp;user) fmt.Fprintf(w, &#34;%s %s is %d years old!&#34;, user.Firstname, user.Lastname, user.Age) }) http.HandleFunc(&#34;/encode&#34;, func(w http.ResponseWriter, r *http.Request) { peter := User{ Firstname: &#34;</description>
     </item>
     
     <item>
@@ -107,10 +115,10 @@ In this example we will only allow authenticated users to view our secret messag
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/websockets/</guid>
-      <description>Websockets This example will show how to work with websockets in Go. We will build a simple server which echoes back everything we send to it. For this we have to go get the popular gorilla/websocket library like so:
+      <description>Websockets 这个例子将展示如何使用Websockets。我们将建立一个简单的server,它发回我们发给它所有的内容。这里我们用go get来下载 gorilla/websocket :
 $ go get github.com/gorilla/websocket
-From now on, every application we write will be able to make use of this library.
-(adsbygoogle = window.adsbygoogle || []).push({});// websockets.</description>
+接下来，我们所有的应用都将使用这个库.
+   (adsbygoogle = window.adsbygoogle || []).push({});   // websockets.go package main import ( &#34;fmt&#34; &#34;net/http&#34; &#34;github.com/gorilla/websocket&#34; ) var upgrader = websocket.Upgrader{ ReadBufferSize: 1024, WriteBufferSize: 1024, } func main() { http.HandleFunc(&#34;/echo&#34;, func(w http.ResponseWriter, r *http.Request) { conn, _ := upgrader.Upgrade(w, r, nil) // error ignored for sake of simplicity for { // Read message from browser msgType, msg, err := conn.</description>
     </item>
     
     <item>
@@ -119,10 +127,10 @@ From now on, every application we write will be able to make use of this library
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gowebexamples.com/password-hashing/</guid>
-      <description>Password Hashing (bcrypt) This example will show how to hash passwords using bcrypt. For this we have to go get the golang bcrypt library like so:
+      <description>Password Hashing (bcrypt) 这个例子将展示如何使用bcrypt 来hash 密码. 为了使用它，我们需要 go get bcrypt 这个库:
 $ go get golang.org/x/crypto/bcrypt
-From now on, every application we write will be able to make use of this library.
-(adsbygoogle = window.adsbygoogle || []).push({});// passwords.go package main import ( &amp;quot;fmt&amp;quot; &amp;quot;golang.org/x/crypto/bcrypt&amp;quot; ) func HashPassword(password string) (string, error) { bytes, err := bcrypt.</description>
+接下来，我们所有的应用都将使用这个库..
+   (adsbygoogle = window.adsbygoogle || []).push({});   // passwords.go package main import ( &#34;fmt&#34; &#34;golang.org/x/crypto/bcrypt&#34; ) func HashPassword(password string) (string, error) { bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14) return string(bytes), err } func CheckPasswordHash(password, hash string) bool { err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password)) return err == nil } func main() { password := &#34;</description>
     </item>
     
     <item>
@@ -132,7 +140,7 @@ From now on, every application we write will be able to make use of this library
       
       <guid>https://gowebexamples.com/imprint/</guid>
       <description>Legal Disclosure Information in accordance with section 5 TMG
-document.write(atob(&#34;UGhpbGlwcCBUYW5sYWs8YnI+QmVuZWRpa3RpbmVyc3RyLiA0OTxicj4zMzA5OCBQYWRlcmJvcm48YnI+&#34;));Contact Telephone: document.write(atob(&#34;KzQ5MTc2OTEzNDIwNjc=&#34;));E-Mail: document.write(atob(&#34;cGhpbGlwcC50YW5sYWtAZ21haWwuY29t&#34;));Person responsible for content in accordance with 55 Abs. 2 RStV document.write(atob(&#34;UGhpbGlwcCBUYW5sYWs8YnI+QmVuZWRpa3RpbmVyc3RyLiA0OTxicj4zMzA5OCBQYWRlcmJvcm48YnI+&#34;));Indication of source for images and graphics https://amazon.com
+document.write(atob(&#34;UGhpbGlwcCBUYW5sYWs8YnI+QmVuZWRpa3RpbmVyc3RyLiA0OTxicj4zMzA5OCBQYWRlcmJvcm48YnI+&#34;)); Contact Telephone: document.write(atob(&#34;KzQ5MTc2OTEzNDIwNjc=&#34;)); E-Mail: document.write(atob(&#34;cGhpbGlwcC50YW5sYWtAZ21haWwuY29t&#34;)); Person responsible for content in accordance with 55 Abs. 2 RStV document.write(atob(&#34;UGhpbGlwcCBUYW5sYWs8YnI+QmVuZWRpa3RpbmVyc3RyLiA0OTxicj4zMzA5OCBQYWRlcmJvcm48YnI+&#34;)); Indication of source for images and graphics https://amazon.com
 Disclaimer Accountability for content The contents of our pages have been created with the utmost care. However, we cannot guarantee the contents&amp;rsquo; accuracy, completeness or topicality. According to statutory provisions, we are furthermore responsible for our own content on these web pages.</description>
     </item>
     

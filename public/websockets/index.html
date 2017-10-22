@@ -146,12 +146,11 @@
 
 <h1 id="websockets">Websockets</h1>
 
-<p>This example will show how to work with websockets in Go. We will build a simple server which echoes back everything we send to it.
-For this we have to <code>go get</code> the popular <a target="_blank" href="https://github.com/gorilla/websocket">gorilla/websocket</a> library like so:</p>
+<p>这个例子将展示如何使用Websockets。我们将建立一个简单的server,它发回我们发给它所有的内容。这里我们用<code>go get</code>来下载 <a target="_blank" href="https://github.com/gorilla/websocket">gorilla/websocket</a> :</p>
 
 <p><code>$ go get github.com/gorilla/websocket</code></p>
 
-<p>From now on, every application we write will be able to make use of this library.</p>
+<p>接下来，我们所有的应用都将使用这个库.</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -164,77 +163,77 @@ For this we have to <code>go get</code> the popular <a target="_blank" href="htt
 </script>
 
 
-<p><div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #999988; font-style: italic">// websockets.go</span>
-<span style="font-weight: bold">package</span> main
+<p>
+// websockets.go
+package main
 
-<span style="font-weight: bold">import</span> (
-	<span style="color: #bb8844">&quot;fmt&quot;</span>
-	<span style="color: #bb8844">&quot;net/http&quot;</span>
+import (
+	"fmt"
+	"net/http"
 
-	<span style="color: #bb8844">&quot;github.com/gorilla/websocket&quot;</span>
+	"github.com/gorilla/websocket"
 )
 
-<span style="font-weight: bold">var</span> upgrader = websocket.Upgrader{
-	ReadBufferSize:  <span style="color: #009999">1024</span>,
-	WriteBufferSize: <span style="color: #009999">1024</span>,
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:  1024,
+	WriteBufferSize: 1024,
 }
 
-<span style="font-weight: bold">func</span> main() {
-	http.HandleFunc(<span style="color: #bb8844">&quot;/echo&quot;</span>, <span style="font-weight: bold">func</span>(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-		conn, _ <span style="font-weight: bold">:=</span> upgrader.Upgrade(w, r, <span style="font-weight: bold">nil</span>) <span style="color: #999988; font-style: italic">// error ignored for sake of simplicity</span>
+func main() {
+	http.HandleFunc("/echo", func(w http.ResponseWriter, r *http.Request) {
+		conn, _ := upgrader.Upgrade(w, r, nil) // error ignored for sake of simplicity
 
-		<span style="font-weight: bold">for</span> {
-			<span style="color: #999988; font-style: italic">// Read message from browser</span>
-			msgType, msg, err <span style="font-weight: bold">:=</span> conn.ReadMessage()
-			<span style="font-weight: bold">if</span> err <span style="font-weight: bold">!=</span> <span style="font-weight: bold">nil</span> {
-				<span style="font-weight: bold">return</span>
+		for {
+			// Read message from browser
+			msgType, msg, err := conn.ReadMessage()
+			if err != nil {
+				return
 			}
 
-			<span style="color: #999988; font-style: italic">// Print the message to the console</span>
-			fmt.Printf(<span style="color: #bb8844">&quot;%s sent: %s\n&quot;</span>, conn.RemoteAddr(), <span style="color: #999999">string</span>(msg))
+			// Print the message to the console
+			fmt.Printf("%s sent: %s\n", conn.RemoteAddr(), string(msg))
 
-			<span style="color: #999988; font-style: italic">// Write message back to browser</span>
-			<span style="font-weight: bold">if</span> err = conn.WriteMessage(msgType, msg); err <span style="font-weight: bold">!=</span> <span style="font-weight: bold">nil</span> {
-				<span style="font-weight: bold">return</span>
+			// Write message back to browser
+			if err = conn.WriteMessage(msgType, msg); err != nil {
+				return
 			}
 		}
 	})
 
-	http.HandleFunc(<span style="color: #bb8844">&quot;/&quot;</span>, <span style="font-weight: bold">func</span>(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-		http.ServeFile(w, r, <span style="color: #bb8844">&quot;websockets.html&quot;</span>)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "websockets.html")
 	})
 
-	http.ListenAndServe(<span style="color: #bb8844">&quot;:8080&quot;</span>, <span style="font-weight: bold">nil</span>)
+	http.ListenAndServe(":8080", nil)
 }
-</pre></div>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #999988; font-style: italic">&lt;!-- websockets.html --&gt;</span>
-&lt;<span style="color: #000080">input</span> <span style="color: #008080">id</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;input&quot;</span> <span style="color: #008080">type</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;text&quot;</span> /&gt;
-&lt;<span style="color: #000080">button</span> <span style="color: #008080">onclick</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;send()&quot;</span>&gt;Send&lt;/<span style="color: #000080">button</span>&gt;
-&lt;<span style="color: #000080">pre</span> <span style="color: #008080">id</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;output&quot;</span>&gt;&lt;/<span style="color: #000080">pre</span>&gt;
-&lt;<span style="color: #000080">script</span>&gt;
-	<span style="font-weight: bold">var</span> input <span style="font-weight: bold">=</span> <span style="color: #999999">document</span>.getElementById(<span style="color: #bb8844">&quot;input&quot;</span>);
-	<span style="font-weight: bold">var</span> output <span style="font-weight: bold">=</span> <span style="color: #999999">document</span>.getElementById(<span style="color: #bb8844">&quot;output&quot;</span>);
-	<span style="font-weight: bold">var</span> socket <span style="font-weight: bold">=</span> <span style="font-weight: bold">new</span> WebSocket(<span style="color: #bb8844">&quot;ws://localhost:8080/echo&quot;</span>);
 
-	socket.onopen <span style="font-weight: bold">=</span> <span style="font-weight: bold">function</span> () {
-		output.innerHTML <span style="font-weight: bold">+=</span> <span style="color: #bb8844">&quot;Status: Connected\n&quot;</span>;
+<!-- websockets.html -->
+<input id="input" type="text" />
+<button onclick="send()">Send</button>
+<pre id="output"></pre>
+<script>
+	var input = document.getElementById("input");
+	var output = document.getElementById("output");
+	var socket = new WebSocket("ws://localhost:8080/echo");
+
+	socket.onopen = function () {
+		output.innerHTML += "Status: Connected\n";
 	};
 
-	socket.onmessage <span style="font-weight: bold">=</span> <span style="font-weight: bold">function</span> (e) {
-		output.innerHTML <span style="font-weight: bold">+=</span> <span style="color: #bb8844">&quot;Server: &quot;</span> <span style="font-weight: bold">+</span> e.data <span style="font-weight: bold">+</span> <span style="color: #bb8844">&quot;\n&quot;</span>;
+	socket.onmessage = function (e) {
+		output.innerHTML += "Server: " + e.data + "\n";
 	};
 
-	<span style="font-weight: bold">function</span> send() {
+	function send() {
 		socket.send(input.value);
-		input.value <span style="font-weight: bold">=</span> <span style="color: #bb8844">&quot;&quot;</span>;
+		input.value = "";
 	}
-&lt;/<span style="color: #000080">script</span>&gt;
-</pre></div>
+</script>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #555555">$</span> go run websockets.go
-<span style="color: #888888">[127.0.0.1]:53403 sent: Hello Go Web Examples, you&#39;re doing great!</span>
-</pre></div>
+
+$ go run websockets.go
+[127.0.0.1]:53403 sent: Hello Go Web Examples, you're doing great!
 
 <div class="demo">
     <input type="text">

@@ -148,10 +148,7 @@
 
 <h2 id="introduction">Introduction</h2>
 
-<p>Go is a battery included programming language and has a webserver already built in.
-The <code>net/http</code> package from the standard library contains all functionalities about the HTTP protocol.
-This includes (among many other things) an HTTP client and an HTTP server.
-In this example you will figure out how simple it is, to create a webserver that you can view in your browser.</p>
+<p>Go 是一个自带干粮的编程语言，拥有自己的内置webserver.标准库中的net/http 包包含了关于HTTP协议的全部功能的函数。包中包含了一个HTTP client和 一个HTTP server . 在本例子中你将会发现成功创建一个你可以在浏览器中浏览网页的webserver是有多么简单。</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -166,56 +163,48 @@ In this example you will figure out how simple it is, to create a webserver that
 
 <h2 id="registering-a-request-handler">Registering a Request Handler</h2>
 
-<p>First, create a Handler which receives all incomming HTTP connections from browsers, HTTP clients or API requests.
-A handler in Go is a function with this signature:
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="font-weight: bold">func</span> (w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request)
-</pre></div>
-</p>
+<p>首先，创建一个从浏览器接受进来的HTTP链接、HTTP client 或者API请求的Handler， 在Go 中是一个函数，它在创建的时候，形态上有如下相似特点: func (w http.ResponseWriter, r *http.Request) </p>
 
-<p>The function receives two parameters:</p>
+<p>这个函数接受两个参数:</p>
 
 <ol>
-<li>An <code>http.ResponseWriter</code> which is where you write your text/html response to.</li>
-<li>An <code>http.Request</code> which contains all information about this HTTP request including things like the URL or header fields.</li>
+<li><code>http.ResponseWriter</code>: 这个参数是给你写你的text/html响应的</li>
+<li><code>http.Request</code> : 它包含所有HTTP请求的信息，比如URL 或者 header</li>
 </ol>
 
-<p>Registering a request handler to the default HTTP Server is as simple as this:
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>http.HandleFunc(<span style="color: #bb8844">&quot;/&quot;</span>, <span style="font-weight: bold">func</span> (w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-	fmt.Fprintf(w, <span style="color: #bb8844">&quot;Hello, you&#39;ve requested: %s\n&quot;</span>, r.URL.Path)
+<p>注册一个的HTTP Server 的request handler 非常简单，如下就是:
+
+http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
 })
-</pre></div>
 </p>
 
 <h2 id="listen-for-http-connections">Listen for HTTP Connections</h2>
 
-<p>The request handler alone can not accept any HTTP connections from the outside.
-An HTTP server has to listen on a port to pass connections on to the request handler.
-Because port 80 is in most cases the default port for HTTP traffic, this server will also listen on it.</p>
+<p>一个单独的request handler 不能接受任何外部的HTTP 链接。一个HTTP Server, 为了把链接发送给request handle， 它必须监听一个端口。由于80端口是大多数默认的HTTP 流量通道， 所以本server 也会用80端口来监控。下面的代码会启动一个GO的默认HTTP server ,同时监听80端口上的链接。你可以在你的浏览器中访问 <a href="http://localhost/">http://localhost/</a>, 同时可以看到你的server 正在处理你的request
 
-<p>The following code will start Go&rsquo;s default HTTP server and listen for connections on port 80.
-You can navigate your browser to <code>http://localhost/</code> and see your server handing your request.
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>http.ListenAndServe(<span style="color: #bb8844">&quot;:80&quot;</span>, <span style="font-weight: bold">nil</span>)
-</pre></div>
+http.ListenAndServe(":80", nil)
 </p>
 
 <h2 id="the-code-for-copy-paste">The Code (for copy/paste)</h2>
 
-<p>This is the complete code that you can use to try out the things you&rsquo;ve learned in this example.
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="font-weight: bold">package</span> main
+<p>下面是完整的代码.
 
-<span style="font-weight: bold">import</span> (
-	<span style="color: #bb8844">&quot;fmt&quot;</span>
-	<span style="color: #bb8844">&quot;net/http&quot;</span>
+package main
+
+import (
+	"fmt"
+	"net/http"
 )
 
-<span style="font-weight: bold">func</span> main() {
-	http.HandleFunc(<span style="color: #bb8844">&quot;/&quot;</span>, <span style="font-weight: bold">func</span>(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-		fmt.Fprintf(w, <span style="color: #bb8844">&quot;Hello, you&#39;ve requested: %s\n&quot;</span>, r.URL.Path)
+func main() {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
 	})
 
-	http.ListenAndServe(<span style="color: #bb8844">&quot;:80&quot;</span>, <span style="font-weight: bold">nil</span>)
+	http.ListenAndServe(":80", nil)
 }
-</pre></div>
+
 </p>
 
 			<div class="footer">

@@ -6,12 +6,12 @@ description = "This example will show how to hash passwords using bcrypt in the 
 
 # Password Hashing (bcrypt)
 
-This example will show how to hash passwords using bcrypt.
-For this we have to `go get` the golang bcrypt library like so:
+这个例子将展示如何使用bcrypt 来hash 密码.
+为了使用它，我们需要 `go get`  bcrypt 这个库:
 
 `$ go get golang.org/x/crypto/bcrypt`
 
-From now on, every application we write will be able to make use of this library.
+接下来，我们所有的应用都将使用这个库..
 
 {{< edison >}}
 

@@ -146,11 +146,11 @@
 
 <h1 id="sessions">Sessions</h1>
 
-<p>This example will show how to store data in session cookies using the popular  <a target="_blank" href="https://github.com/gorilla/sessions">gorilla/sessions</a> package in Go.</p>
+<p>这个例子将会展示如何通过流行的 <a target="_blank" href="https://github.com/gorilla/sessions">gorilla/sessions</a> 会话 cookies.</p>
 
-<p>Cookies are small pieces of data stored in the browser of a user and are sent to our server on each request. In them, we can store e.g. whether or not a user is logged in into our website and figure out who he actually is (in our system).</p>
+<p>cookie 是存储在用户浏览器中的小数据，并在每次请求时发送到服务器。在它们中，我们可以存储用户是否登录到我们的网站，并找出它时间上是谁（在我们系统中.</p>
 
-<p>In this example we will only allow authenticated users to view our secret message on the <code>/secret</code> page. To get access to it, the will first have to visit <code>/login</code> to get a valid session cookie, which logs him in. Additionally he can visit <code>/logout</code> to revoke his access to our secret message.</p>
+<p>在本例中，我们只允许经过身份验证在<code>/secret</code> 页上查看隐私的信息。要访问它，首先要访问<code>/login</code>得到有效的会话cookie.此外，他可以访问<code>/logout</code> 来注销我们访问私密信息的权限.</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -163,74 +163,74 @@
 </script>
 
 
-<p><div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #999988; font-style: italic">// sessions.go</span>
-<span style="font-weight: bold">package</span> main
+<p>
+// sessions.go
+package main
 
-<span style="font-weight: bold">import</span> (
-	<span style="color: #bb8844">&quot;fmt&quot;</span>
-	<span style="color: #bb8844">&quot;net/http&quot;</span>
+import (
+	"fmt"
+	"net/http"
 
-	<span style="color: #bb8844">&quot;github.com/gorilla/sessions&quot;</span>
+	"github.com/gorilla/sessions"
 )
 
-<span style="font-weight: bold">var</span> (
-	<span style="color: #999988; font-style: italic">// key must be 16, 24 or 32 bytes long (AES-128, AES-192 or AES-256)</span>
-	key = []<span style="color: #999999">byte</span>(<span style="color: #bb8844">&quot;super-secret-key&quot;</span>)
+var (
+	// key must be 16, 24 or 32 bytes long (AES-128, AES-192 or AES-256)
+	key = []byte("super-secret-key")
 	store = sessions.NewCookieStore(key)
 )
 
-<span style="font-weight: bold">func</span> secret(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-	session, _ <span style="font-weight: bold">:=</span> store.Get(r, <span style="color: #bb8844">&quot;cookie-name&quot;</span>)
+func secret(w http.ResponseWriter, r *http.Request) {
+	session, _ := store.Get(r, "cookie-name")
 
-	<span style="color: #999988; font-style: italic">// Check if user is authenticated</span>
-	<span style="font-weight: bold">if</span> auth, ok <span style="font-weight: bold">:=</span> session.Values[<span style="color: #bb8844">&quot;authenticated&quot;</span>].(<span style="color: #445588; font-weight: bold">bool</span>); !ok <span style="font-weight: bold">||</span> !auth {
-		http.Error(w, <span style="color: #bb8844">&quot;Forbidden&quot;</span>, http.StatusForbidden)
-		<span style="font-weight: bold">return</span>
+	// Check if user is authenticated
+	if auth, ok := session.Values["authenticated"].(bool); !ok || !auth {
+		http.Error(w, "Forbidden", http.StatusForbidden)
+		return
 	}
 
-	<span style="color: #999988; font-style: italic">// Print secret message</span>
-	fmt.Fprintln(w, <span style="color: #bb8844">&quot;The cake is a lie!&quot;</span>)
+	// Print secret message
+	fmt.Fprintln(w, "The cake is a lie!")
 }
 
-<span style="font-weight: bold">func</span> login(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-	session, _ <span style="font-weight: bold">:=</span> store.Get(r, <span style="color: #bb8844">&quot;cookie-name&quot;</span>)
+func login(w http.ResponseWriter, r *http.Request) {
+	session, _ := store.Get(r, "cookie-name")
 
-	<span style="color: #999988; font-style: italic">// Authentication goes here</span>
-	<span style="color: #999988; font-style: italic">// ...</span>
+	// Authentication goes here
+	// ...
 
-	<span style="color: #999988; font-style: italic">// Set user as authenticated</span>
-	session.Values[<span style="color: #bb8844">&quot;authenticated&quot;</span>] = <span style="font-weight: bold">true</span>
+	// Set user as authenticated
+	session.Values["authenticated"] = true
 	session.Save(r, w)
 }
 
-<span style="font-weight: bold">func</span> logout(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-	session, _ <span style="font-weight: bold">:=</span> store.Get(r, <span style="color: #bb8844">&quot;cookie-name&quot;</span>)
+func logout(w http.ResponseWriter, r *http.Request) {
+	session, _ := store.Get(r, "cookie-name")
 
-	<span style="color: #999988; font-style: italic">// Revoke users authentication</span>
-	session.Values[<span style="color: #bb8844">&quot;authenticated&quot;</span>] = <span style="font-weight: bold">false</span>
+	// Revoke users authentication
+	session.Values["authenticated"] = false
 	session.Save(r, w)
 }
 
-<span style="font-weight: bold">func</span> main() {
-	http.HandleFunc(<span style="color: #bb8844">&quot;/secret&quot;</span>, secret)
-	http.HandleFunc(<span style="color: #bb8844">&quot;/login&quot;</span>, login)
-	http.HandleFunc(<span style="color: #bb8844">&quot;/logout&quot;</span>, logout)
+func main() {
+	http.HandleFunc("/secret", secret)
+	http.HandleFunc("/login", login)
+	http.HandleFunc("/logout", logout)
 
-	http.ListenAndServe(<span style="color: #bb8844">&quot;:8080&quot;</span>, <span style="font-weight: bold">nil</span>)
+	http.ListenAndServe(":8080", nil)
 }
-</pre></div>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #555555">$</span> go run sessions.go
 
-<span style="color: #555555">$</span> curl -s http://localhost:8080/secret
-<span style="color: #888888">Forbidden</span>
+$ go run sessions.go
 
-<span style="color: #555555">$</span> curl -s -I http://localhost:8080/login
-<span style="color: #888888">Set-Cookie: cookie-name=MTQ4NzE5Mz...</span>
+$ curl -s http://localhost:8080/secret
+Forbidden
 
-<span style="color: #555555">$</span> curl -s --cookie <span style="color: #bb8844">&quot;cookie-name=MTQ4NzE5Mz...&quot;</span> http://localhost:8080/secret
-<span style="color: #888888">The cake is a lie!</span>
-</pre></div>
+$ curl -s -I http://localhost:8080/login
+Set-Cookie: cookie-name=MTQ4NzE5Mz...
+
+$ curl -s --cookie "cookie-name=MTQ4NzE5Mz..." http://localhost:8080/secret
+The cake is a lie!
 </p>
 
 			<div class="footer">

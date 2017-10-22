@@ -146,7 +146,7 @@
 
 <h1 id="json">JSON</h1>
 
-<p>This example will show how to encode and decode JSON data using the <code>encoding/json</code> package.</p>
+<p>本例将展示如何使用encoding/json包来编码和解码 JSON文件的.</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -159,51 +159,52 @@
 </script>
 
 
-<p><div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #999988; font-style: italic">// json.go</span>
-<span style="font-weight: bold">package</span> main
+<p>
+// json.go
+package main
 
-<span style="font-weight: bold">import</span> (
-	<span style="color: #bb8844">&quot;encoding/json&quot;</span>
-	<span style="color: #bb8844">&quot;fmt&quot;</span>
-	<span style="color: #bb8844">&quot;net/http&quot;</span>
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
 )
 
-<span style="font-weight: bold">type</span> User <span style="font-weight: bold">struct</span> {
-	Firstname <span style="color: #445588; font-weight: bold">string</span> <span style="color: #bb8844">`json:&quot;firstname&quot;`</span>
-	Lastname  <span style="color: #445588; font-weight: bold">string</span> <span style="color: #bb8844">`json:&quot;lastname&quot;`</span>
-	Age       <span style="color: #445588; font-weight: bold">int</span>    <span style="color: #bb8844">`json:&quot;age&quot;`</span>
+type User struct {
+	Firstname string `json:"firstname"`
+	Lastname  string `json:"lastname"`
+	Age       int    `json:"age"`
 }
 
-<span style="font-weight: bold">func</span> main() {
-	http.HandleFunc(<span style="color: #bb8844">&quot;/decode&quot;</span>, <span style="font-weight: bold">func</span>(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-		<span style="font-weight: bold">var</span> user User
-		json.NewDecoder(r.Body).Decode(<span style="font-weight: bold">&amp;</span>user)
+func main() {
+	http.HandleFunc("/decode", func(w http.ResponseWriter, r *http.Request) {
+		var user User
+		json.NewDecoder(r.Body).Decode(&user)
 
-		fmt.Fprintf(w, <span style="color: #bb8844">&quot;%s %s is %d years old!&quot;</span>, user.Firstname, user.Lastname, user.Age)
+		fmt.Fprintf(w, "%s %s is %d years old!", user.Firstname, user.Lastname, user.Age)
 	})
 
-	http.HandleFunc(<span style="color: #bb8844">&quot;/encode&quot;</span>, <span style="font-weight: bold">func</span>(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-		peter <span style="font-weight: bold">:=</span> User{
-			Firstname: <span style="color: #bb8844">&quot;John&quot;</span>,
-			Lastname:  <span style="color: #bb8844">&quot;Doe&quot;</span>,
-			Age:       <span style="color: #009999">25</span>,
+	http.HandleFunc("/encode", func(w http.ResponseWriter, r *http.Request) {
+		peter := User{
+			Firstname: "John",
+			Lastname:  "Doe",
+			Age:       25,
 		}
 
 		json.NewEncoder(w).Encode(peter)
 	})
 
-	http.ListenAndServe(<span style="color: #bb8844">&quot;:8080&quot;</span>, <span style="font-weight: bold">nil</span>)
+	http.ListenAndServe(":8080", nil)
 }
-</pre></div>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #555555">$</span> go run json.go
 
-<span style="color: #555555">$</span> curl -s -XPOST -d<span style="color: #bb8844">&#39;{&quot;firstname&quot;:&quot;Donald&quot;,&quot;lastname&quot;:&quot;Trump&quot;,&quot;age&quot;:70}&#39;</span> http://localhost:8080/decode
-<span style="color: #888888">Donald Trump is 70 years old!</span>
+$ go run json.go
 
-<span style="color: #555555">$</span> curl -s http://localhost:8080/encode
-<span style="color: #888888">{&quot;firstname&quot;:&quot;John&quot;,&quot;lastname&quot;:&quot;Doe&quot;,&quot;age&quot;:25}</span>
-</pre></div>
+$ curl -s -XPOST -d'{"firstname":"Donald","lastname":"Trump","age":70}' http://localhost:8080/decode
+Donald Trump is 70 years old!
+
+$ curl -s http://localhost:8080/encode
+{"firstname":"John","lastname":"Doe","age":25}
+
 </p>
 
 			<div class="footer">
