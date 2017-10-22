@@ -146,7 +146,7 @@
 
 <h1 id="assets-and-files">Assets and Files</h1>
 
-<p>This example will show how to serve static files like CSSs, JavaScripts or images from a specific directory.</p>
+<p>这个例子将展示如何使用静态文件比如CSS、 JavaScripts或图片.</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -159,32 +159,32 @@
 </script>
 
 
-<p><div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #999988; font-style: italic">// static-files.go</span>
-<span style="font-weight: bold">package</span> main
+<p>
+// static-files.go
+package main
 
-<span style="font-weight: bold">import</span> <span style="color: #bb8844">&quot;net/http&quot;</span>
+import "net/http"
 
-<span style="font-weight: bold">func</span> main() {
-	fs <span style="font-weight: bold">:=</span> http.FileServer(http.Dir(<span style="color: #bb8844">&quot;assets/&quot;</span>))
-	http.Handle(<span style="color: #bb8844">&quot;/static/&quot;</span>, http.StripPrefix(<span style="color: #bb8844">&quot;/static/&quot;</span>, fs))
+func main() {
+	fs := http.FileServer(http.Dir("assets/"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	http.ListenAndServe(<span style="color: #bb8844">&quot;:8080&quot;</span>, <span style="font-weight: bold">nil</span>)
+	http.ListenAndServe(":8080", nil)
 }
-</pre></div>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #555555">$</span> tree assets/
-<span style="color: #888888">assets/</span>
-<span style="color: #888888">└── css</span>
-<span style="color: #888888">    └── styles.css</span>
-</pre></div>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #555555">$</span> go run static-files.go
+$ tree assets/
+assets/
+└── css
+    └── styles.css
 
-<span style="color: #555555">$</span> curl -s http://localhost:8080/static/css/styles.css
-<span style="color: #888888">body {</span>
-<span style="color: #888888">    background-color: black;</span>
-<span style="color: #888888">}</span>
-</pre></div>
+
+$ go run static-files.go
+
+$ curl -s http://localhost:8080/static/css/styles.css
+body {
+    background-color: black;
+}
 </p>
 
 			<div class="footer">

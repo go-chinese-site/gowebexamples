@@ -146,7 +146,7 @@
 
 <h1 id="forms">Forms</h1>
 
-<p>This example will show how to simulate a contact form and parse the message into a struct.</p>
+<p>这个例子将演示如何模拟联系人表单并将其解析到结构体中.</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -159,64 +159,64 @@
 </script>
 
 
-<p><div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #999988; font-style: italic">// forms.go</span>
-<span style="font-weight: bold">package</span> main
+<p>
+// forms.go
+package main
 
-<span style="font-weight: bold">import</span> (
-	<span style="color: #bb8844">&quot;html/template&quot;</span>
-	<span style="color: #bb8844">&quot;net/http&quot;</span>
+import (
+	"html/template"
+	"net/http"
 )
 
-<span style="font-weight: bold">type</span> ContactDetails <span style="font-weight: bold">struct</span> {
-	Email   <span style="color: #445588; font-weight: bold">string</span>
-	Subject <span style="color: #445588; font-weight: bold">string</span>
-	Message <span style="color: #445588; font-weight: bold">string</span>
+type ContactDetails struct {
+	Email   string
+	Subject string
+	Message string
 }
 
-<span style="font-weight: bold">func</span> main() {
-	tmpl <span style="font-weight: bold">:=</span> template.Must(template.ParseFiles(<span style="color: #bb8844">&quot;forms.html&quot;</span>))
+func main() {
+	tmpl := template.Must(template.ParseFiles("forms.html"))
 
-	http.HandleFunc(<span style="color: #bb8844">&quot;/&quot;</span>, <span style="font-weight: bold">func</span>(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-		<span style="font-weight: bold">if</span> r.Method <span style="font-weight: bold">!=</span> http.MethodPost {
-			tmpl.Execute(w, <span style="font-weight: bold">nil</span>)
-			<span style="font-weight: bold">return</span>
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			tmpl.Execute(w, nil)
+			return
 		}
 
-		details <span style="font-weight: bold">:=</span> ContactDetails{
-			Email:   r.FormValue(<span style="color: #bb8844">&quot;email&quot;</span>),
-			Subject: r.FormValue(<span style="color: #bb8844">&quot;subject&quot;</span>),
-			Message: r.FormValue(<span style="color: #bb8844">&quot;message&quot;</span>),
+		details := ContactDetails{
+			Email:   r.FormValue("email"),
+			Subject: r.FormValue("subject"),
+			Message: r.FormValue("message"),
 		}
 
-		<span style="color: #999988; font-style: italic">// do something with details</span>
+		// do something with details
 		_ = details
 
-		tmpl.Execute(w, <span style="font-weight: bold">struct</span>{ Success <span style="color: #445588; font-weight: bold">bool</span> }{<span style="font-weight: bold">true</span>})
+		tmpl.Execute(w, struct{ Success bool }{true})
 	})
 
-	http.ListenAndServe(<span style="color: #bb8844">&quot;:8080&quot;</span>, <span style="font-weight: bold">nil</span>)
+	http.ListenAndServe(":8080", nil)
 }
-</pre></div>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #999988; font-style: italic">&lt;!-- forms.html --&gt;</span>
+
+<!-- forms.html -->
 {{if .Success}}
-	&lt;<span style="color: #000080">h1</span>&gt;Thanks for your message!&lt;/<span style="color: #000080">h1</span>&gt;
+	<h1>Thanks for your message!</h1>
 {{else}}
-	&lt;<span style="color: #000080">h1</span>&gt;Contact&lt;/<span style="color: #000080">h1</span>&gt;
-	&lt;<span style="color: #000080">form</span> <span style="color: #008080">method</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;POST&quot;</span>&gt;
-		&lt;<span style="color: #000080">label</span>&gt;Email:&lt;/<span style="color: #000080">label</span>&gt;&lt;<span style="color: #000080">br</span> /&gt;
-		&lt;<span style="color: #000080">input</span> <span style="color: #008080">type</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;text&quot;</span> <span style="color: #008080">name</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;email&quot;</span>&gt;&lt;<span style="color: #000080">br</span> /&gt;
-		&lt;<span style="color: #000080">label</span>&gt;Subject:&lt;/<span style="color: #000080">label</span>&gt;&lt;<span style="color: #000080">br</span> /&gt;
-		&lt;<span style="color: #000080">input</span> <span style="color: #008080">type</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;text&quot;</span> <span style="color: #008080">name</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;subject&quot;</span>&gt;&lt;<span style="color: #000080">br</span> /&gt;
-		&lt;<span style="color: #000080">label</span>&gt;Message:&lt;/<span style="color: #000080">label</span>&gt;&lt;<span style="color: #000080">br</span> /&gt;
-		&lt;<span style="color: #000080">textarea</span> <span style="color: #008080">name</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;message&quot;</span>&gt;&lt;/<span style="color: #000080">textarea</span>&gt;&lt;<span style="color: #000080">br</span> /&gt;
-		&lt;<span style="color: #000080">input</span> <span style="color: #008080">type</span><span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;submit&quot;</span>&gt;
-	&lt;/<span style="color: #000080">form</span>&gt;
+	<h1>Contact</h1>
+	<form method="POST">
+		<label>Email:</label><br />
+		<input type="text" name="email"><br />
+		<label>Subject:</label><br />
+		<input type="text" name="subject"><br />
+		<label>Message:</label><br />
+		<textarea name="message"></textarea><br />
+		<input type="submit">
+	</form>
 {{end}}
-</pre></div>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #555555">$</span> go run forms.go
-</pre></div>
+
+$ go run forms.go
 
 <div class="demo">
     <h1>Contact</h1>

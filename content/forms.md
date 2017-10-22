@@ -6,7 +6,7 @@ description = "This example will show how to simulate a contact form and parse t
 
 # Forms
 
-This example will show how to simulate a contact form and parse the message into a struct.
+这个例子将演示如何模拟联系人表单并将其解析到结构体中.
 
 {{< edison >}}
 

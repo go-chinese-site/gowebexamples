@@ -6,12 +6,11 @@ description = "This example will show how to work with websockets in Go. We will
 
 # Websockets
 
-This example will show how to work with websockets in Go. We will build a simple server which echoes back everything we send to it.
-For this we have to `go get` the popular <a target="_blank" href="https://github.com/gorilla/websocket">gorilla/websocket</a> library like so:
+这个例子将展示如何使用Websockets。我们将建立一个简单的server,它发回我们发给它所有的内容。这里我们用`go get `来下载 <a target="_blank" href="https://github.com/gorilla/websocket">gorilla/websocket</a> :
 
 `$ go get github.com/gorilla/websocket`
 
-From now on, every application we write will be able to make use of this library.
+接下来，我们所有的应用都将使用这个库.
 
 {{< edison >}}
 

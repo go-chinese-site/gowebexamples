@@ -146,9 +146,9 @@
 
 <h1 id="middleware-basic">Middleware (Basic)</h1>
 
-<p>This example will show how to create basic logging middleware in Go.</p>
+<p>这个例子将展示在Go中创建基本的日志中间件.</p>
 
-<p>A middleware simply takes a <code>http.HandlerFunc</code> as one of its parameters, wraps it and returns a new <code>http.HandlerFunc</code> for the server to call.</p>
+<p>这个例子将展示如何在GO中创建基本的日志中间件。一个中间件只需要一个<code>http.HandlerFunc</code> 作为它其中的一个参数，装饰它，并返回一个新的<code>http.HandlerFunc</code>用于服务器调用</p>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
@@ -161,47 +161,47 @@
 </script>
 
 
-<p><div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #999988; font-style: italic">// basic-middleware.go</span>
-<span style="font-weight: bold">package</span> main
+<p>
+// basic-middleware.go
+package main
 
-<span style="font-weight: bold">import</span> (
-	<span style="color: #bb8844">&quot;fmt&quot;</span>
-	<span style="color: #bb8844">&quot;log&quot;</span>
-	<span style="color: #bb8844">&quot;net/http&quot;</span>
+import (
+	"fmt"
+	"log"
+	"net/http"
 )
 
-<span style="font-weight: bold">func</span> logging(f http.HandlerFunc) http.HandlerFunc {
-	<span style="font-weight: bold">return</span> <span style="font-weight: bold">func</span>(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
+func logging(f http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
 		log.Println(r.URL.Path)
 		f(w, r)
 	}
 }
 
-<span style="font-weight: bold">func</span> foo(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-	fmt.Fprintln(w, <span style="color: #bb8844">&quot;foo&quot;</span>)
+func foo(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "foo")
 }
 
-<span style="font-weight: bold">func</span> bar(w http.ResponseWriter, r <span style="font-weight: bold">*</span>http.Request) {
-	fmt.Fprintln(w, <span style="color: #bb8844">&quot;bar&quot;</span>)
+func bar(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "bar")
 }
 
-<span style="font-weight: bold">func</span> main() {
-	http.HandleFunc(<span style="color: #bb8844">&quot;/foo&quot;</span>, logging(foo))
-	http.HandleFunc(<span style="color: #bb8844">&quot;/bar&quot;</span>, logging(bar))
+func main() {
+	http.HandleFunc("/foo", logging(foo))
+	http.HandleFunc("/bar", logging(bar))
 
-	http.ListenAndServe(<span style="color: #bb8844">&quot;:8080&quot;</span>, <span style="font-weight: bold">nil</span>)
+	http.ListenAndServe(":8080", nil)
 }
-</pre></div>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #555555">$</span> go run basic-middleware.go
-<span style="color: #888888">2017/02/10 23:59:34 /foo</span>
-<span style="color: #888888">2017/02/10 23:59:35 /bar</span>
-<span style="color: #888888">2017/02/10 23:59:36 /foo?bar</span>
 
-<span style="color: #555555">$</span> curl -s http://localhost:8080/foo
-<span style="color: #555555">$</span> curl -s http://localhost:8080/bar
-<span style="color: #555555">$</span> curl -s http://localhost:8080/foo?bar
-</pre></div>
+$ go run basic-middleware.go
+2017/02/10 23:59:34 /foo
+2017/02/10 23:59:35 /bar
+2017/02/10 23:59:36 /foo?bar
+
+$ curl -s http://localhost:8080/foo
+$ curl -s http://localhost:8080/bar
+$ curl -s http://localhost:8080/foo?bar
 </p>
 
 			<div class="footer">

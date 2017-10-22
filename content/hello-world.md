@@ -7,26 +7,19 @@ description = "This examples shows how to create an HTTP server using the net/ht
 # Hello World
 
 ## Introduction
-Go is a battery included programming language and has a webserver already built in.
-The `net/http` package from the standard library contains all functionalities about the HTTP protocol.
-This includes (among many other things) an HTTP client and an HTTP server.
-In this example you will figure out how simple it is, to create a webserver that you can view in your browser.
+Go 是一个自带干粮的编程语言，拥有自己的内置webserver.标准库中的net/http 包包含了关于HTTP协议的全部功能的函数。包中包含了一个HTTP client和 一个HTTP server . 在本例子中你将会发现成功创建一个你可以在浏览器中浏览网页的webserver是有多么简单。
 
 {{< edison >}}
 
 ## Registering a Request Handler
-First, create a Handler which receives all incomming HTTP connections from browsers, HTTP clients or API requests.
-A handler in Go is a function with this signature:
-{{< highlight go >}}
-func (w http.ResponseWriter, r *http.Request)
-{{< / highlight >}}
+首先，创建一个从浏览器接受进来的HTTP链接、HTTP client 或者API请求的Handler， 在Go 中是一个函数，它在创建的时候，形态上有如下相似特点:{{< highlight go >}} func (w http.ResponseWriter, r *http.Request) {{< / highlight >}}
 
-The function receives two parameters:
+这个函数接受两个参数:
 
-1. An `http.ResponseWriter` which is where you write your text/html response to.
-2. An `http.Request` which contains all information about this HTTP request including things like the URL or header fields.
+1. `http.ResponseWriter`: 这个参数是给你写你的text/html响应的
+2. `http.Request` : 它包含所有HTTP请求的信息，比如URL 或者 header
 
-Registering a request handler to the default HTTP Server is as simple as this:
+注册一个的HTTP Server 的request handler 非常简单，如下就是:
 {{< highlight go >}}
 http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
@@ -34,18 +27,13 @@ http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
 {{< / highlight >}}
 
 ## Listen for HTTP Connections
-The request handler alone can not accept any HTTP connections from the outside.
-An HTTP server has to listen on a port to pass connections on to the request handler.
-Because port 80 is in most cases the default port for HTTP traffic, this server will also listen on it.
-
-The following code will start Go's default HTTP server and listen for connections on port 80.
-You can navigate your browser to `http://localhost/` and see your server handing your request.
+一个单独的request handler 不能接受任何外部的HTTP 链接。一个HTTP Server, 为了把链接发送给request handle， 它必须监听一个端口。由于80端口是大多数默认的HTTP 流量通道， 所以本server 也会用80端口来监控。下面的代码会启动一个GO的默认HTTP server ,同时监听80端口上的链接。你可以在你的浏览器中访问 http://localhost/, 同时可以看到你的server 正在处理你的request
 {{< highlight go >}}
 http.ListenAndServe(":80", nil)
 {{< / highlight >}}
 
 ## The Code (for copy/paste)
-This is the complete code that you can use to try out the things you've learned in this example.
+下面是完整的代码.
 {{< highlight go >}}
 package main
 
