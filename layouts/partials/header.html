@@ -10,11 +10,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 	<meta name="google-site-verification" content="Ztd8vuEnIdHM7XE9qXXPgfoVjq9FWnHtK8Y8la08CRM" />
 	<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
-	<link rel="alternate" type="application/rss+xml" href="index.xml" />
+	<link rel="alternate" type="application/rss+xml" href="{{.Site.BaseURL}}index.xml" />
 	<link rel="canonical" href="{{.Permalink}}">
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{.Site.BaseURL}}apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="{{.Site.BaseURL}}favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="{{.Site.BaseURL}}favicon-16x16.png" sizes="16x16">
 	<meta name="theme-color" content="#bb8844">
 	<style>
 		* { box-sizing: border-box; }
@@ -40,7 +40,7 @@
 		pre { padding: 15px; overflow-x: auto; background: #fafafa; border: 1px solid #f0f0f0; }
 		.highlight { font-size: 0.9em; }
 		.demo pre { background-color: white; border: none; margin: 1em 0 0 0; padding: 0; }
-		a[target="_blank"]:not(.buy-on-amazon) { background: url(link.svg) right top/9px no-repeat; padding-right: 12px; }
+		a[target="_blank"]:not(.buy-on-amazon) { background: url({{.Site.BaseURL}}link.svg) right top/9px no-repeat; padding-right: 12px; }
 		.links { display: flex; justify-content: space-between; }
 		a.back { text-decoration: none; }
 		a.home { text-decoration: none; }

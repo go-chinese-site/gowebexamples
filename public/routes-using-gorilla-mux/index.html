@@ -8,11 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 	<meta name="google-site-verification" content="Ztd8vuEnIdHM7XE9qXXPgfoVjq9FWnHtK8Y8la08CRM" />
 	<meta name="description" content="This example shows how to use the `gorilla/mux` package to create routes with named parameters, GET/POST handlers and domain restrictions." />
-	<link rel="alternate" type="application/rss+xml" href="index.xml" />
+	<link rel="alternate" type="application/rss+xml" href="http://books.studygolang.com/gowebexamples/index.xml" />
 	<link rel="canonical" href="http://books.studygolang.com/gowebexamples/routes-using-gorilla-mux/">
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+	<link rel="apple-touch-icon" sizes="180x180" href="http://books.studygolang.com/gowebexamples/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="http://books.studygolang.com/gowebexamples/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="http://books.studygolang.com/gowebexamples/favicon-16x16.png" sizes="16x16">
 	<meta name="theme-color" content="#bb8844">
 	<style>
 		* { box-sizing: border-box; }
@@ -38,7 +38,7 @@
 		pre { padding: 15px; overflow-x: auto; background: #fafafa; border: 1px solid #f0f0f0; }
 		.highlight { font-size: 0.9em; }
 		.demo pre { background-color: white; border: none; margin: 1em 0 0 0; padding: 0; }
-		a[target="_blank"]:not(.buy-on-amazon) { background: url(link.svg) right top/9px no-repeat; padding-right: 12px; }
+		a[target="_blank"]:not(.buy-on-amazon) { background: url(http://books.studygolang.com/gowebexamples/link.svg) right top/9px no-repeat; padding-right: 12px; }
 		.links { display: flex; justify-content: space-between; }
 		a.back { text-decoration: none; }
 		a.home { text-decoration: none; }
@@ -101,26 +101,26 @@
 
 <div class="container">
 	<div class="sidebar">
-	<div class="brand"><a href="/gowebexamples">Go Web 示例</a> <a class="menu-btn" href="#">Open<br>Menu</a></div>
+	<div class="brand"><a href="http://books.studygolang.com/gowebexamples/">Go Web 示例</a> <a class="menu-btn" href="#">Open<br>Menu</a></div>
 	<div class="sections closed">
 		<div class="section">
 			<div class="category">基础知识</div>
-			<div><a href="hello-world/">Hello World</a></div>
-			<div><a href="routes-using-gorilla-mux/">Routing (using gorilla/mux)</a></div>
-			<div><a href="templates/">Templates</a></div>
-			<div><a href="forms/">Requests &amp; Forms</a></div>
-			<div><a href="static-files/">Assets &amp; Files</a></div>
-			<div><a href="basic-middleware/">Middleware (Basic)</a></div>
-			<div><a href="advanced-middleware/">Middleware (Advanced)</a></div>
-			<div><a href="sessions/">Session</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/hello-world/">Hello World</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/routes-using-gorilla-mux/">Routing (using gorilla/mux)</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/templates/">Templates</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/forms/">Requests &amp; Forms</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/static-files/">Assets &amp; Files</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/basic-middleware/">Middleware (Basic)</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/advanced-middleware/">Middleware (Advanced)</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/sessions/">Session</a></div>
 			
-			<div><a href="json/">JSON</a></div>
-			<div><a href="websockets/">Websockets</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/json/">JSON</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/websockets/">Websockets</a></div>
 		</div>
 		<div class="section">
 			<div class="category">安全</div>
 			
-			<div><a href="password-hashing/">Password Hashing (bcrypt)</a></div>
+			<div><a href="http://books.studygolang.com/gowebexamples/password-hashing/">Password Hashing (bcrypt)</a></div>
 			
 		</div>
 		
@@ -136,7 +136,7 @@
 		by <strong><a href="https://twitter.com/matryer">Mat Ryer</a></strong>
 		<a class="buy-on-amazon" href="https://www.amazon.com/gp/product/B01GQCQ8OW/ref=as_li_tl?ie=UTF8&tag=gowebexamples-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B01GQCQ8OW&linkId=23e81ee689826c9bc166441c44359be8" target="_blank">
 			马上购买<br />
-			<img src="amazon-logo.png" />
+			<img src="http://books.studygolang.com/gowebexamples/amazon-logo.png" />
 		</a>
 	</div>
 </div>
@@ -150,16 +150,7 @@
 
 <p>Go 的<code>net/http</code> 包提供了许多HTTP协议功能的函数。有一件事件，它还做的不够好，比如对于复杂的请求路由把请求的url分割成单个参数。幸运的是，在Go的社区里，有一个非常流行的package 来解决这个问题。在本例中，你将会看到如何用 <code>gorilla/mux</code>以命名参数、GET/POST Hander 和域名限制的形式来创建路由</p>
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-	style="display:block; text-align:center;"
-	data-ad-layout="in-article"
-	data-ad-format="fluid"
-	data-ad-client="ca-pub-4512014793067058"
-	data-ad-slot="9795350466"></ins>
-<script>
-	(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+
 
 <h2 id="installing-the-gorilla-mux-package">Installing the <code>gorilla/mux</code> package</h2>
 
@@ -263,7 +254,7 @@ bookrouter.HandleFunc(<span style="color:#b84">&#34;/{title}&#34;</span>, GetBoo
 			
 			<a title="Hello World" class="back" href="http://books.studygolang.com/gowebexamples/hello-world/">← 上一个例子</a>
 			
-			<a title="Go Web 示例" class="home" href="/gowebexamples/">首页</a>
+			<a title="Go Web 示例" class="home" href="http://books.studygolang.com/gowebexamples/">首页</a>
 			
 			<a title="Templates" class="forward" href="http://books.studygolang.com/gowebexamples/templates/">下一个例子 →</a>
 			

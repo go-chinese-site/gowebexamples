@@ -17,7 +17,7 @@
       
       <guid>http://books.studygolang.com/gowebexamples/hello-world/</guid>
       <description>Hello World Introduction Go 是一个自带干粮的编程语言，拥有自己的内置webserver.标准库中的net/http 包包含了关于HTTP协议的全部功能的函数。包中包含了一个HTTP client和 一个HTTP server . 在本例子中你将会发现成功创建一个你可以在浏览器中浏览网页的webserver是有多么简单。
-   (adsbygoogle = window.adsbygoogle || []).push({});  Registering a Request Handler 首先，创建一个从浏览器接受进来的HTTP链接、HTTP client 或者API请求的Handler， 在Go 中是一个函数，它在创建的时候，形态上有如下相似特点:func (w http.ResponseWriter, r *http.Request) 
+Registering a Request Handler 首先，创建一个从浏览器接受进来的HTTP链接、HTTP client 或者API请求的Handler， 在Go 中是一个函数，它在创建的时候，形态上有如下相似特点:func (w http.ResponseWriter, r *http.Request) 
 这个函数接受两个参数:
  http.ResponseWriter: 这个参数是给你写你的text/html响应的 http.Request : 它包含所有HTTP请求的信息，比如URL 或者 header  注册一个的HTTP Server 的request handler 非常简单，如下就是: http.HandleFunc(&amp;#34;/&amp;#34;, func (w http.ResponseWriter, r *http.Request) { fmt.Fprintf(w, &amp;#34;Hello, you&amp;#39;ve requested: %s\n&amp;#34;, r.URL.Path) })
 Listen for HTTP Connections 一个单独的request handler 不能接受任何外部的HTTP 链接。一个HTTP Server, 为了把链接发送给request handle， 它必须监听一个端口。由于80端口是大多数默认的HTTP 流量通道， 所以本server 也会用80端口来监控。下面的代码会启动一个GO的默认HTTP server ,同时监听80端口上的链接。你可以在你的浏览器中访问 http://localhost/, 同时可以看到你的server 正在处理你的request http.</description>
@@ -30,11 +30,11 @@ Listen for HTTP Connections 一个单独的request handler 不能接受任何外
       
       <guid>http://books.studygolang.com/gowebexamples/routes-using-gorilla-mux/</guid>
       <description>Routing (using gorilla/mux) Introduction Go 的net/http 包提供了许多HTTP协议功能的函数。有一件事件，它还做的不够好，比如对于复杂的请求路由把请求的url分割成单个参数。幸运的是，在Go的社区里，有一个非常流行的package 来解决这个问题。在本例中，你将会看到如何用 gorilla/mux以命名参数、GET/POST Hander 和域名限制的形式来创建路由
-   (adsbygoogle = window.adsbygoogle || []).push({});  Installing the gorilla/mux package gorilla/mux 在写web 应用时，它带来了许多特性来提升生产效率。它在创建的时候，形态上和GO原始创建request handler 在创建形式上相似:func (w http.ResponseWriter, r *http.Request).所以这个包可以和其他HTTP 库混合使用，比如middleware 或已经存在的应用。通过 go get从 Github 上下载安装: go get -u github.com/gorilla/mux
+Installing the gorilla/mux package gorilla/mux 在写web 应用时，它带来了许多特性来提升生产效率。它在创建的时候，形态上和GO原始创建request handler 在创建形式上相似:func (w http.ResponseWriter, r *http.Request).所以这个包可以和其他HTTP 库混合使用，比如middleware 或已经存在的应用。通过 go get从 Github 上下载安装: go get -u github.com/gorilla/mux
 Creating a new Router 首先创建一个新的路由。对于你的web应用，这个路由是主路由，它会传递参数到你的server.它会接受所有的HTTP链接，同时发送到你注册的request handler 上。你可以像下面一下创建: r := mux.NewRouter()
 Registering a Request Handler 当你已经创建了一个路由，你可以像内置包那样注册request handler.唯一不同的是，调用 http.HandleFunc(...)时，你可以用r.HandleFunc(...) 来代替.
 URL Parameters gorilla/mux 路由最具有能量的地方是从请求的URL上提取信息。作为一个例子，比如下面是你应用的URL: /books/go-programming-blueprint/page/10 这个URL有两个动态部分:
- Book 的标题(go-programming-blueprint) 页数 (10)  对于上面提到的URL,在处理request handler时， 你可以如下处理，来做动态参数处理: r.</description>
+ Book 的标题(go-programming-blueprint) 页数 (10)  对于上面提到的URL,在处理request handler时， 你可以如下处理，来做动态参数处理: r.HandleFunc(&amp;#34;/books/{title}/page/{page}&amp;#34;, func(w http.</description>
     </item>
     
     <item>
@@ -44,9 +44,10 @@ URL Parameters gorilla/mux 路由最具有能量的地方是从请求的URL上�
       
       <guid>http://books.studygolang.com/gowebexamples/templates/</guid>
       <description>Templates Introduction Go 的html/template包对HTML模板提供了丰富的模板语言。它主要用于Web应用程序，在客户端的浏览中以结构化的方式显示数据。Go 模板语言最大的好处就是数据的自动转义。没有必要担心在显示浏览器之前，那些作为GO解析HTML模板的XSS攻击和避开所有输入.
-   (adsbygoogle = window.adsbygoogle || []).push({});  First Template GO写一个模板非常简单。这个例子展示一个TODO 列表, 用HTML中的无序列表 （ul）来写， 当渲染模板时， 可以从GO的各种数据结构中导入。它可以是简单的string 或 数字， 它甚至可以是嵌套的数据结构。要访问模板中的数据，最前的变量是通过{{. }} 来访问。其中 花括号中的点(.) 称为管道和root.
+First Template GO写一个模板非常简单。这个例子展示一个TODO 列表, 用HTML中的无序列表 （ul）来写， 当渲染模板时， 可以从GO的各种数据结构中导入。它可以是简单的string 或 数字， 它甚至可以是嵌套的数据结构。要访问模板中的数据，最前的变量是通过{{. }} 来访问。其中 花括号中的点(.) 称为管道和root.
 data := TodoPageData{ PageTitle: &amp;#34;My TODO list&amp;#34;, Todos: []Todo{ {Title: &amp;#34;Task 1&amp;#34;, Done: false}, {Title: &amp;#34;Task 2&amp;#34;, Done: true}, {Title: &amp;#34;Task 3&amp;#34;, Done: true}, }, } &amp;lt;h1&amp;gt;{{.PageTitle}}&amp;lt;h1&amp;gt; &amp;lt;ul&amp;gt; {{range .Todos}} {{if .Done}} &amp;lt;li class=&amp;#34;done&amp;#34;&amp;gt;{{.Title}}&amp;lt;/li&amp;gt; {{else}} &amp;lt;li&amp;gt;{{.Title}}&amp;lt;/li&amp;gt; {{end}} {{end}} &amp;lt;/ul&amp;gt;
-Control Structures 模板语言包含一组丰富的控制结构来渲染HTML.</description>
+Control Structures 模板语言包含一组丰富的控制结构来渲染HTML.这里你将会看到一些最常用的。更详细的清单访问: text/template
+   Control Structure Definition     {{/* a comment */}} Defines a comment   {{.</description>
     </item>
     
     <item>
@@ -56,7 +57,7 @@ Control Structures 模板语言包含一组丰富的控制结构来渲染HTML.</
       
       <guid>http://books.studygolang.com/gowebexamples/static-files/</guid>
       <description>Assets and Files 这个例子将展示如何使用静态文件比如CSS、 JavaScripts或图片.
-   (adsbygoogle = window.adsbygoogle || []).push({});  // static-files.go package main import &amp;#34;net/http&amp;#34; func main() { fs := http.FileServer(http.Dir(&amp;#34;assets/&amp;#34;)) http.Handle(&amp;#34;/static/&amp;#34;, http.StripPrefix(&amp;#34;/static/&amp;#34;, fs)) http.ListenAndServe(&amp;#34;:8080&amp;#34;, nil) } $ tree assets/ assets/ └── css └── styles.css $ go run static-files.go $ curl -s http://localhost:8080/static/css/styles.css body { background-color: black; }</description>
+// static-files.go package main import &amp;#34;net/http&amp;#34; func main() { fs := http.FileServer(http.Dir(&amp;#34;assets/&amp;#34;)) http.Handle(&amp;#34;/static/&amp;#34;, http.StripPrefix(&amp;#34;/static/&amp;#34;, fs)) http.ListenAndServe(&amp;#34;:8080&amp;#34;, nil) } $ tree assets/ assets/ └── css └── styles.css $ go run static-files.go $ curl -s http://localhost:8080/static/css/styles.css body { background-color: black; }</description>
     </item>
     
     <item>
@@ -66,7 +67,7 @@ Control Structures 模板语言包含一组丰富的控制结构来渲染HTML.</
       
       <guid>http://books.studygolang.com/gowebexamples/forms/</guid>
       <description>Forms 这个例子将演示如何模拟联系人表单并将其解析到结构体中.
-   (adsbygoogle = window.adsbygoogle || []).push({});  // forms.go package main import ( &amp;#34;html/template&amp;#34; &amp;#34;net/http&amp;#34; ) type ContactDetails struct { Email string Subject string Message string } func main() { tmpl := template.Must(template.ParseFiles(&amp;#34;forms.html&amp;#34;)) http.HandleFunc(&amp;#34;/&amp;#34;, func(w http.ResponseWriter, r *http.Request) { if r.Method != http.MethodPost { tmpl.Execute(w, nil) return } details := ContactDetails{ Email: r.FormValue(&amp;#34;email&amp;#34;), Subject: r.FormValue(&amp;#34;subject&amp;#34;), Message: r.FormValue(&amp;#34;message&amp;#34;), } // do something with details 	_ = details tmpl.</description>
+// forms.go package main import ( &amp;#34;html/template&amp;#34; &amp;#34;net/http&amp;#34; ) type ContactDetails struct { Email string Subject string Message string } func main() { tmpl := template.Must(template.ParseFiles(&amp;#34;forms.html&amp;#34;)) http.HandleFunc(&amp;#34;/&amp;#34;, func(w http.ResponseWriter, r *http.Request) { if r.Method != http.MethodPost { tmpl.Execute(w, nil) return } details := ContactDetails{ Email: r.FormValue(&amp;#34;email&amp;#34;), Subject: r.FormValue(&amp;#34;subject&amp;#34;), Message: r.FormValue(&amp;#34;message&amp;#34;), } // do something with details 	_ = details tmpl.Execute(w, struct{ Success bool }{true}) }) http.ListenAndServe(&amp;#34;:8080&amp;#34;, nil) } &amp;lt;!</description>
     </item>
     
     <item>
@@ -77,7 +78,7 @@ Control Structures 模板语言包含一组丰富的控制结构来渲染HTML.</
       <guid>http://books.studygolang.com/gowebexamples/basic-middleware/</guid>
       <description>Middleware (Basic) 这个例子将展示在Go中创建基本的日志中间件.
 这个例子将展示如何在GO中创建基本的日志中间件。一个中间件只需要一个http.HandlerFunc 作为它其中的一个参数，装饰它，并返回一个新的http.HandlerFunc用于服务器调用
-   (adsbygoogle = window.adsbygoogle || []).push({});  // basic-middleware.go package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; ) func logging(f http.HandlerFunc) http.HandlerFunc { return func(w http.ResponseWriter, r *http.Request) { log.Println(r.URL.Path) f(w, r) } } func foo(w http.ResponseWriter, r *http.Request) { fmt.Fprintln(w, &amp;#34;foo&amp;#34;) } func bar(w http.ResponseWriter, r *http.Request) { fmt.Fprintln(w, &amp;#34;bar&amp;#34;) } func main() { http.HandleFunc(&amp;#34;/foo&amp;#34;, logging(foo)) http.HandleFunc(&amp;#34;/bar&amp;#34;, logging(bar)) http.ListenAndServe(&amp;#34;:8080&amp;#34;, nil) } $ go run basic-middleware.</description>
+// basic-middleware.go package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; ) func logging(f http.HandlerFunc) http.HandlerFunc { return func(w http.ResponseWriter, r *http.Request) { log.Println(r.URL.Path) f(w, r) } } func foo(w http.ResponseWriter, r *http.Request) { fmt.Fprintln(w, &amp;#34;foo&amp;#34;) } func bar(w http.ResponseWriter, r *http.Request) { fmt.Fprintln(w, &amp;#34;bar&amp;#34;) } func main() { http.HandleFunc(&amp;#34;/foo&amp;#34;, logging(foo)) http.HandleFunc(&amp;#34;/bar&amp;#34;, logging(bar)) http.ListenAndServe(&amp;#34;:8080&amp;#34;, nil) } $ go run basic-middleware.go 2017/02/10 23:59:34 /foo 2017/02/10 23:59:35 /bar 2017/02/10 23:59:36 /foo?</description>
     </item>
     
     <item>
@@ -88,7 +89,7 @@ Control Structures 模板语言包含一组丰富的控制结构来渲染HTML.</
       <guid>http://books.studygolang.com/gowebexamples/advanced-middleware/</guid>
       <description>Middleware (Advanced) 这个例子将展示如何在GO中创建更高级的中间件。一个中间件只需要一个http.HandlerFunc 作为它的一个参数，装饰它并把它作为一个新的 http.HandlerFunc 给服务器调用.
 在这里，我们定义一个新的类型 Middleware, 它可以更容易的链接多个中间件。这个想法灵感来自于Mat Ryer 谈论如果建立APIs. 你可以从 这里查看更详细的内容.
-   (adsbygoogle = window.adsbygoogle || []).push({});  
+
 这个片段详细展示了如何创建一个新的中间件。此处下面是完整的例子，这里我们减少了一些样板代码. func createNewMiddleware() Middleware { // Create a new Middleware 	middleware := func(next http.HandlerFunc) http.HandlerFunc { // Define the http.HandlerFunc which is called by the server eventually 	handler := func(w http.ResponseWriter, r *http.Request) { // ... do middleware things  // Call the next middleware/handler in chain 	next(w, r) } // Return newly created handler 	return handler } // Return newly created middleware 	return middleware } 下面是完整的例子: // advanced-middleware.</description>
     </item>
     
@@ -101,7 +102,7 @@ Control Structures 模板语言包含一组丰富的控制结构来渲染HTML.</
       <description>Sessions 这个例子将会展示如何通过流行的 gorilla/sessions 会话 cookies.
 cookie 是存储在用户浏览器中的小数据，并在每次请求时发送到服务器。在它们中，我们可以存储用户是否登录到我们的网站，并找出它时间上是谁（在我们系统中.
 在本例中，我们只允许经过身份验证在/secret 页上查看隐私的信息。要访问它，首先要访问/login得到有效的会话cookie.此外，他可以访问/logout 来注销我们访问私密信息的权限.
-   (adsbygoogle = window.adsbygoogle || []).push({});  // sessions.go package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;github.com/gorilla/sessions&amp;#34; ) var ( // key must be 16, 24 or 32 bytes long (AES-128, AES-192 or AES-256) 	key = []byte(&amp;#34;super-secret-key&amp;#34;) store = sessions.NewCookieStore(key) ) func secret(w http.ResponseWriter, r *http.Request) { session, _ := store.Get(r, &amp;#34;cookie-name&amp;#34;) // Check if user is authenticated 	if auth, ok := session.</description>
+// sessions.go package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;github.com/gorilla/sessions&amp;#34; ) var ( // key must be 16, 24 or 32 bytes long (AES-128, AES-192 or AES-256) 	key = []byte(&amp;#34;super-secret-key&amp;#34;) store = sessions.NewCookieStore(key) ) func secret(w http.ResponseWriter, r *http.Request) { session, _ := store.Get(r, &amp;#34;cookie-name&amp;#34;) // Check if user is authenticated 	if auth, ok := session.Values[&amp;#34;authenticated&amp;#34;].(bool); !ok || !</description>
     </item>
     
     <item>
@@ -111,7 +112,7 @@ cookie 是存储在用户浏览器中的小数据，并在每次请求时发送�
       
       <guid>http://books.studygolang.com/gowebexamples/json/</guid>
       <description>JSON 本例将展示如何使用encoding/json包来编码和解码 JSON文件的.
-   (adsbygoogle = window.adsbygoogle || []).push({});  // json.go package main import ( &amp;#34;encoding/json&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; ) type User struct { Firstname string `json:&amp;#34;firstname&amp;#34;` Lastname string `json:&amp;#34;lastname&amp;#34;` Age int `json:&amp;#34;age&amp;#34;` } func main() { http.HandleFunc(&amp;#34;/decode&amp;#34;, func(w http.ResponseWriter, r *http.Request) { var user User json.NewDecoder(r.Body).Decode(&amp;amp;user) fmt.Fprintf(w, &amp;#34;%s %s is %d years old!&amp;#34;, user.Firstname, user.Lastname, user.Age) }) http.HandleFunc(&amp;#34;/encode&amp;#34;, func(w http.ResponseWriter, r *http.Request) { peter := User{ Firstname: &amp;#34;John&amp;#34;, Lastname: &amp;#34;Doe&amp;#34;, Age: 25, } json.</description>
+// json.go package main import ( &amp;#34;encoding/json&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; ) type User struct { Firstname string `json:&amp;#34;firstname&amp;#34;` Lastname string `json:&amp;#34;lastname&amp;#34;` Age int `json:&amp;#34;age&amp;#34;` } func main() { http.HandleFunc(&amp;#34;/decode&amp;#34;, func(w http.ResponseWriter, r *http.Request) { var user User json.NewDecoder(r.Body).Decode(&amp;amp;user) fmt.Fprintf(w, &amp;#34;%s %s is %d years old!&amp;#34;, user.Firstname, user.Lastname, user.Age) }) http.HandleFunc(&amp;#34;/encode&amp;#34;, func(w http.ResponseWriter, r *http.Request) { peter := User{ Firstname: &amp;#34;John&amp;#34;, Lastname: &amp;#34;Doe&amp;#34;, Age: 25, } json.NewEncoder(w).Encode(peter) }) http.</description>
     </item>
     
     <item>
@@ -123,7 +124,7 @@ cookie 是存储在用户浏览器中的小数据，并在每次请求时发送�
       <description>Websockets 这个例子将展示如何使用Websockets。我们将建立一个简单的server,它发回我们发给它所有的内容。这里我们用go get来下载 gorilla/websocket :
 $ go get github.com/gorilla/websocket
 接下来，我们所有的应用都将使用这个库.
-   (adsbygoogle = window.adsbygoogle || []).push({});  // websockets.go package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;github.com/gorilla/websocket&amp;#34; ) var upgrader = websocket.Upgrader{ ReadBufferSize: 1024, WriteBufferSize: 1024, } func main() { http.HandleFunc(&amp;#34;/echo&amp;#34;, func(w http.ResponseWriter, r *http.Request) { conn, _ := upgrader.Upgrade(w, r, nil) // error ignored for sake of simplicity  for { // Read message from browser 	msgType, msg, err := conn.</description>
+// websockets.go package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;github.com/gorilla/websocket&amp;#34; ) var upgrader = websocket.Upgrader{ ReadBufferSize: 1024, WriteBufferSize: 1024, } func main() { http.HandleFunc(&amp;#34;/echo&amp;#34;, func(w http.ResponseWriter, r *http.Request) { conn, _ := upgrader.Upgrade(w, r, nil) // error ignored for sake of simplicity  for { // Read message from browser 	msgType, msg, err := conn.ReadMessage() if err != nil { return } // Print the message to the console 	fmt.</description>
     </item>
     
     <item>
@@ -135,7 +136,7 @@ $ go get github.com/gorilla/websocket
       <description>Password Hashing (bcrypt) 这个例子将展示如何使用bcrypt 来hash 密码. 为了使用它，我们需要 go get bcrypt 这个库:
 $ go get golang.org/x/crypto/bcrypt
 接下来，我们所有的应用都将使用这个库..
-   (adsbygoogle = window.adsbygoogle || []).push({});  // passwords.go package main import ( &amp;#34;fmt&amp;#34; &amp;#34;golang.org/x/crypto/bcrypt&amp;#34; ) func HashPassword(password string) (string, error) { bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14) return string(bytes), err } func CheckPasswordHash(password, hash string) bool { err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password)) return err == nil } func main() { password := &amp;#34;secret&amp;#34; hash, _ := HashPassword(password) // ignore error for the sake of simplicity  fmt.</description>
+// passwords.go package main import ( &amp;#34;fmt&amp;#34; &amp;#34;golang.org/x/crypto/bcrypt&amp;#34; ) func HashPassword(password string) (string, error) { bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14) return string(bytes), err } func CheckPasswordHash(password, hash string) bool { err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password)) return err == nil } func main() { password := &amp;#34;secret&amp;#34; hash, _ := HashPassword(password) // ignore error for the sake of simplicity  fmt.</description>
     </item>
     
     <item>

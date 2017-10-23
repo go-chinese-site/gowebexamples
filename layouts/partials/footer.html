@@ -4,7 +4,7 @@
 			{{if .Prev}}
 			<a title="{{.Prev.Title}}" class="back" href="{{.Prev.Permalink}}">← 上一个例子</a>
 			{{end}}
-			<a title="{{.Site.Title}}" class="home" href="/gowebexamples/">首页</a>
+			<a title="{{.Site.Title}}" class="home" href="{{.Site.BaseURL}}">首页</a>
 			{{if .Next}}
 			<a title="{{.Next.Title}}" class="forward" href="{{.Next.Permalink}}">下一个例子 →</a>
 			{{end}}
