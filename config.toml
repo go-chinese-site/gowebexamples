@@ -1,9 +1,9 @@
-baseUrl = "https://gowebexamples.com/"
-languageCode = "en-us"
-title = "Go Web Examples"
+baseUrl = "http://books.studygolang.com/gowebexamples/"
+languageCode = "zh-CN"
+title = "Go Web 示例"
 PygmentsCodeFences = true
 PygmentsStyle = "trac"
 enableRobotsTXT = true
 
 [Params]
-description = "Go Web Examples provides easy to understand code snippets on how to do web development in the Go programming language."
+description = "Go Web 示例提供了易于理解的代码片段, 关于如何在 go 编程语言中进行 web 开发。"

@@ -2,11 +2,11 @@
 		<div class="links">
 			{{if ne .Site.Title .Title}}
 			{{if .Prev}}
-			<a title="{{.Prev.Title}}" class="back" href="/gowebexamples{{.Prev.Permalink}}">← 上一个例子</a>
+			<a title="{{.Prev.Title}}" class="back" href="{{.Prev.Permalink}}">← 上一个例子</a>
 			{{end}}
-			<a title="{{.Site.Title}}" class="home" href="/gowebexamples">首页</a>
+			<a title="{{.Site.Title}}" class="home" href="/gowebexamples/">首页</a>
 			{{if .Next}}
-			<a title="{{.Next.Title}}" class="forward" href="/gowebexamples{{.Next.Permalink}}">下一个例子 →</a>
+			<a title="{{.Next.Title}}" class="forward" href="{{.Next.Permalink}}">下一个例子 →</a>
 			{{end}}
 			{{end}}
 		</div>

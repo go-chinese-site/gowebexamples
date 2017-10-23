@@ -3,69 +3,69 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://gowebexamples.com/hello-world/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/hello-world/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/routes-using-gorilla-mux/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/routes-using-gorilla-mux/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/templates/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/templates/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/static-files/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/static-files/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/forms/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/forms/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/basic-middleware/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/basic-middleware/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/advanced-middleware/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/advanced-middleware/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/sessions/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/sessions/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/json/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/json/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/websockets/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/websockets/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/password-hashing/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/password-hashing/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/imprint/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/imprint/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/categories/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/privacy/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/privacy/</loc>
   </url>
   
   <url>
-    <loc>https://gowebexamples.com/tags/</loc>
+    <loc>http://books.studygolang.com/gowebexamples/tags/</loc>
     <priority>0</priority>
   </url>
   

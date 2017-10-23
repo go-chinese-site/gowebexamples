@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
 	
-	<title>Go Web Examples: Templates</title>
+	<title>Go Web 示例: Templates</title>
 	
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 	<meta name="google-site-verification" content="Ztd8vuEnIdHM7XE9qXXPgfoVjq9FWnHtK8Y8la08CRM" />
 	<meta name="description" content="This example shows how to use the `gorilla/mux` package to create routes with named parameters, GET/POST handlers and domain restrictions." />
-	<link rel="alternate" type="application/rss+xml" href="/index.xml" />
-	<link rel="canonical" href="https://gowebexamples.com/templates/">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<link rel="alternate" type="application/rss+xml" href="index.xml" />
+	<link rel="canonical" href="http://books.studygolang.com/gowebexamples/templates/">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
 	<meta name="theme-color" content="#bb8844">
 	<style>
 		* { box-sizing: border-box; }
@@ -38,7 +38,7 @@
 		pre { padding: 15px; overflow-x: auto; background: #fafafa; border: 1px solid #f0f0f0; }
 		.highlight { font-size: 0.9em; }
 		.demo pre { background-color: white; border: none; margin: 1em 0 0 0; padding: 0; }
-		a[target="_blank"]:not(.buy-on-amazon) { background: url(/link.svg) right top/9px no-repeat; padding-right: 12px; }
+		a[target="_blank"]:not(.buy-on-amazon) { background: url(link.svg) right top/9px no-repeat; padding-right: 12px; }
 		.links { display: flex; justify-content: space-between; }
 		a.back { text-decoration: none; }
 		a.home { text-decoration: none; }
@@ -91,36 +91,36 @@
 	</style>
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<script>
-		(adsbygoogle = window.adsbygoogle || []).push({
-			google_ad_client: "ca-pub-9994791825937062",
-			enable_page_level_ads: true
-		});
+	(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-4512014793067058",
+		enable_page_level_ads: true
+	});
 	</script>
 </head>
 <body>
 
 <div class="container">
 	<div class="sidebar">
-	<div class="brand"><a href="/">Go Web Examples</a> <a class="menu-btn" href="#">Open<br>Menu</a></div>
+	<div class="brand"><a href="/gowebexamples">Go Web 示例</a> <a class="menu-btn" href="#">Open<br>Menu</a></div>
 	<div class="sections closed">
 		<div class="section">
-			<div class="category">The Basics</div>
-			<div><a href="/hello-world/">Hello World</a></div>
-			<div><a href="/routes-using-gorilla-mux/">Routing (using gorilla/mux)</a></div>
-			<div><a href="/templates/">Templates</a></div>
-			<div><a href="/forms/">Requests &amp; Forms</a></div>
-			<div><a href="/static-files/">Assets &amp; Files</a></div>
-			<div><a href="/basic-middleware/">Middleware (Basic)</a></div>
-			<div><a href="/advanced-middleware/">Middleware (Advanced)</a></div>
-			<div><a href="/sessions/">Session</a></div>
+			<div class="category">基础知识</div>
+			<div><a href="hello-world/">Hello World</a></div>
+			<div><a href="routes-using-gorilla-mux/">Routing (using gorilla/mux)</a></div>
+			<div><a href="templates/">Templates</a></div>
+			<div><a href="forms/">Requests &amp; Forms</a></div>
+			<div><a href="static-files/">Assets &amp; Files</a></div>
+			<div><a href="basic-middleware/">Middleware (Basic)</a></div>
+			<div><a href="advanced-middleware/">Middleware (Advanced)</a></div>
+			<div><a href="sessions/">Session</a></div>
 			
-			<div><a href="/json/">JSON</a></div>
-			<div><a href="/websockets/">Websockets</a></div>
+			<div><a href="json/">JSON</a></div>
+			<div><a href="websockets/">Websockets</a></div>
 		</div>
 		<div class="section">
-			<div class="category">Security</div>
+			<div class="category">安全</div>
 			
-			<div><a href="/password-hashing/">Password Hashing (bcrypt)</a></div>
+			<div><a href="password-hashing/">Password Hashing (bcrypt)</a></div>
 			
 		</div>
 		
@@ -128,15 +128,15 @@
 		
 	</div>
 	<div class="recommend">
-		<div class="title">Our personal recommendation:</div>
+		<div class="title">我们的个人推荐:</div>
 		<strong>Go Programming Blueprints</strong>
 		<div class="recommend-img">
 			<a href="/we-recommend" target="_blank"><img src="https://images-na.ssl-images-amazon.com/images/I/51BOfTggRIL.jpg" alt="Go Programming Blueprints - Mat Ryer" /></a>
 		</div>
 		by <strong><a href="https://twitter.com/matryer">Mat Ryer</a></strong>
-		<a class="buy-on-amazon" href="/we-recommend" target="_blank">
-			Get it on<br />
-			<img src="/amazon-logo.png" />
+		<a class="buy-on-amazon" href="https://www.amazon.com/gp/product/B01GQCQ8OW/ref=as_li_tl?ie=UTF8&tag=gowebexamples-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B01GQCQ8OW&linkId=23e81ee689826c9bc166441c44359be8" target="_blank">
+			马上购买<br />
+			<img src="amazon-logo.png" />
 		</a>
 	</div>
 </div>
@@ -152,41 +152,37 @@
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9994791825937062"
-     data-ad-slot="2297047126"
-     data-ad-format="auto"></ins>
+	style="display:block; text-align:center;"
+	data-ad-layout="in-article"
+	data-ad-format="fluid"
+	data-ad-client="ca-pub-4512014793067058"
+	data-ad-slot="9795350466"></ins>
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
+	(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
 
 <h2 id="first-template">First Template</h2>
 
 <p>GO写一个模板非常简单。这个例子展示一个TODO 列表, 用HTML中的无序列表 （ul）来写， 当渲染模板时， 可以从GO的各种数据结构中导入。它可以是简单的string 或 数字， 它甚至可以是嵌套的数据结构。要访问模板中的数据，最前的变量是通过{{. }} 来访问。其中 花括号中的点(.) 称为管道和root.</p>
 
-<p>
-data := TodoPageData{
-	PageTitle: "My TODO list",
+<p><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">data <span style="font-weight:bold">:=</span> TodoPageData{
+	PageTitle: <span style="color:#b84">&#34;My TODO list&#34;</span>,
 	Todos: []Todo{
-		{Title: "Task 1", Done: false},
-		{Title: "Task 2", Done: true},
-		{Title: "Task 3", Done: true},
+		{Title: <span style="color:#b84">&#34;Task 1&#34;</span>, Done: <span style="font-weight:bold">false</span>},
+		{Title: <span style="color:#b84">&#34;Task 2&#34;</span>, Done: <span style="font-weight:bold">true</span>},
+		{Title: <span style="color:#b84">&#34;Task 3&#34;</span>, Done: <span style="font-weight:bold">true</span>},
 	},
-}
-
-
-<h1>{{.PageTitle}}<h1>
-<ul>
+}</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">h1</span>&gt;{{.PageTitle}}&lt;<span style="color:#000080">h1</span>&gt;
+&lt;<span style="color:#000080">ul</span>&gt;
     {{range .Todos}}
         {{if .Done}}
-            <li class="done">{{.Title}}</li>
+            &lt;<span style="color:#000080">li</span> <span style="color:#008080">class</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;done&#34;</span>&gt;{{.Title}}&lt;/<span style="color:#000080">li</span>&gt;
         {{else}}
-            <li>{{.Title}}</li>
+            &lt;<span style="color:#000080">li</span>&gt;{{.Title}}&lt;/<span style="color:#000080">li</span>&gt;
         {{end}}
     {{end}}
-</ul>
-</p>
+&lt;/<span style="color:#000080">ul</span>&gt;</code></pre></div></p>
 
 <h2 id="control-structures">Control Structures</h2>
 
@@ -237,93 +233,82 @@ data := TodoPageData{
 
 <p>模板可以是从一个字符串或者磁盘上的文件解析。通常下，模板是来自磁盘。这个example 展示了如何来操作。在这个例子，下面GO程序中，有一个模板名字为<code>layout.html</code>.</p>
 
-
-tmpl, err := template.ParseFiles("layout.html")
-// or
-tmpl := template.Must(template.ParseFiles("layout.html"))
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">tmpl, err <span style="font-weight:bold">:=</span> template.ParseFiles(<span style="color:#b84">&#34;layout.html&#34;</span>)
+<span style="color:#998;font-style:italic">// or
+</span><span style="color:#998;font-style:italic"></span>tmpl <span style="font-weight:bold">:=</span> template.Must(template.ParseFiles(<span style="color:#b84">&#34;layout.html&#34;</span>))</code></pre></div>
 
 <h2 id="execute-a-template-in-a-request-handler">Execute a Template in a Request Handler</h2>
 
 <p>模板从磁盘解析后，就可以在请求处理程序中使用它。<code>Execute</code> 函数接受一个写入模板的<code>io.Writer</code>和一个将数据传递到模板中的 interface {} 。当被一个http.ResponseWriter 调用时. Header的Content-Type中的<code>Content-Type: text/html; charset=utf-8</code> 是被自动设置在HTTP 响应文中.</p>
 
-
-func(w http.ResponseWriter, r *http.Request) {
-	tmpl.Execute(w, "data goes here")
-}
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">func</span>(w http.ResponseWriter, r <span style="font-weight:bold">*</span>http.Request) {
+	tmpl.Execute(w, <span style="color:#b84">&#34;data goes here&#34;</span>)
+}</code></pre></div>
 
 <h2 id="the-code-for-copy-paste">The Code (for copy/paste)</h2>
 
 <p>下面是全部代码.
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="font-weight:bold">package</span> main
 
-package main
-
-import (
-	"html/template"
-	"net/http"
+<span style="font-weight:bold">import</span> (
+	<span style="color:#b84">&#34;html/template&#34;</span>
+	<span style="color:#b84">&#34;net/http&#34;</span>
 )
 
-type Todo struct {
-	Title string
-	Done  bool
+<span style="font-weight:bold">type</span> Todo <span style="font-weight:bold">struct</span> {
+	Title <span style="color:#458;font-weight:bold">string</span>
+	Done  <span style="color:#458;font-weight:bold">bool</span>
 }
 
-type TodoPageData struct {
-	PageTitle string
+<span style="font-weight:bold">type</span> TodoPageData <span style="font-weight:bold">struct</span> {
+	PageTitle <span style="color:#458;font-weight:bold">string</span>
 	Todos     []Todo
 }
 
-func main() {
-	tmpl := template.Must(template.ParseFiles("layout.html"))
+<span style="font-weight:bold">func</span> main() {
+	tmpl <span style="font-weight:bold">:=</span> template.Must(template.ParseFiles(<span style="color:#b84">&#34;layout.html&#34;</span>))
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		data := TodoPageData{
-			PageTitle: "My TODO list",
+	http.HandleFunc(<span style="color:#b84">&#34;/&#34;</span>, <span style="font-weight:bold">func</span>(w http.ResponseWriter, r <span style="font-weight:bold">*</span>http.Request) {
+		data <span style="font-weight:bold">:=</span> TodoPageData{
+			PageTitle: <span style="color:#b84">&#34;My TODO list&#34;</span>,
 			Todos: []Todo{
-				{Title: "Task 1", Done: false},
-				{Title: "Task 2", Done: true},
-				{Title: "Task 3", Done: true},
+				{Title: <span style="color:#b84">&#34;Task 1&#34;</span>, Done: <span style="font-weight:bold">false</span>},
+				{Title: <span style="color:#b84">&#34;Task 2&#34;</span>, Done: <span style="font-weight:bold">true</span>},
+				{Title: <span style="color:#b84">&#34;Task 3&#34;</span>, Done: <span style="font-weight:bold">true</span>},
 			},
 		}
 		tmpl.Execute(w, data)
 	})
 
-	http.ListenAndServe(":80", nil)
-}
-
-
-<h1>{{.PageTitle}}<h1>
-<ul>
+	http.ListenAndServe(<span style="color:#b84">&#34;:80&#34;</span>, <span style="font-weight:bold">nil</span>)
+}</code></pre></div>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">h1</span>&gt;{{.PageTitle}}&lt;<span style="color:#000080">h1</span>&gt;
+&lt;<span style="color:#000080">ul</span>&gt;
     {{range .Todos}}
         {{if .Done}}
-            <li class="done">{{.Title}}</li>
+            &lt;<span style="color:#000080">li</span> <span style="color:#008080">class</span><span style="font-weight:bold">=</span><span style="color:#b84">&#34;done&#34;</span>&gt;{{.Title}}&lt;/<span style="color:#000080">li</span>&gt;
         {{else}}
-            <li>{{.Title}}</li>
+            &lt;<span style="color:#000080">li</span>&gt;{{.Title}}&lt;/<span style="color:#000080">li</span>&gt;
         {{end}}
     {{end}}
-</ul>
-</p>
+&lt;/<span style="color:#000080">ul</span>&gt;</code></pre></div></p>
 
 			<div class="footer">
 		<div class="links">
 			
 			
-			<a title="Routing (using gorilla/mux)" class="back" href="https://gowebexamples.com/routes-using-gorilla-mux/">← back</a>
+			<a title="Routing (using gorilla/mux)" class="back" href="http://books.studygolang.com/gowebexamples/routes-using-gorilla-mux/">← 上一个例子</a>
 			
-			<a title="Go Web Examples" class="home" href="/">home</a>
+			<a title="Go Web 示例" class="home" href="/gowebexamples/">首页</a>
 			
-			<a title="Assets and Files" class="forward" href="https://gowebexamples.com/static-files/">forward →</a>
+			<a title="Assets and Files" class="forward" href="http://books.studygolang.com/gowebexamples/static-files/">下一个例子 →</a>
 			
 			
 		</div>
 		<br /><br />
-		by <a href="https://github.com/philippta">philippta</a>
-		| <script>document.write(atob("PGEgaHJlZj0ibWFpbHRvOnAudGFubGFrQHdlYi5kZSI+ZmVlZGJhY2s8L2E+"));</script>
-		| <a href="https://github.com/gowebexamples/gowebexamples">source</a>
-		| <a href="https://github.com/gowebexamples/gowebexamples#license">license</a>
+		<a href="https://github.com/philippta" target="_blank">philippta</a>编写 | <a href="https://github.com/gowebexamples/gowebexamples" target="_blank">英文项目</a> | <a href="https://studygolang.com" target="_blank">Go语言中文网</a>组织翻译 | <a href="https://github.com/go-chinese-site/gowebexamples" target="_blank">中文项目</a> | <a href="https://github.com/gowebexamples/gowebexamples#license" target="_blank">license</a>
 		<div class="right">
-			<a href="/imprint">Legal Disclosure</a>	| <a href="/privacy">Privacy Statement</a>
+			<a href="imprint">Legal Disclosure</a> | <a href="privacy">Privacy Statement</a>
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -345,13 +330,6 @@ func main() {
 	src="//cdnjs.cloudflare.com/ajax/libs/cookie-banner/1.0.0/cookiebanner.min.js"
 	data-height="32px" data-position="bottom" data-bg="#f0f0f0" data-fg="black"
 	data-message="We use cookies to improve your browsing experience. :-)"></script>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103566946-2"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments)};
-		gtag('js', new Date());
-		gtag('config', 'UA-103566946-2', { 'anonymize_ip': true });
-	</script>
 
 	</div>
 </div>
