@@ -6,9 +6,9 @@ description = "This example will show how to create a more advanced version of m
 
 # Middleware (Advanced)
 
-这个例子将展示如何在GO中创建更高级的中间件。一个中间件只需要一个`http.HandlerFunc` 作为它的一个参数，装饰它并把它作为一个新的 `http.HandlerFunc`  给服务器调用.
+这个例子将展示如何在GO中创建更高级的中间件。一个中间件只需要一个`http.HandlerFunc` 作为它的一个参数，装饰它并把它作为一个新的 `http.HandlerFunc` 给服务器调用.
 
-在这里，我们定义一个新的类型`Middleware`, 它可以更容易的链接多个中间件。这个想法灵感来自于Mat Ryer 谈论如果建立APIs.
+在这里，我们定义一个新的类型 `Middleware`, 它可以更容易的链接多个中间件。这个想法灵感来自于Mat Ryer 谈论如果建立APIs.
 你可以从 <a target="_blank" href="https://medium.com/@matryer/writing-middleware-in-golang-and-how-go-makes-it-so-much-fun-4375c1246e81">这里</a>查看更详细的内容.
 
 {{< edison >}}
