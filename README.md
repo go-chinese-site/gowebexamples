@@ -1,7 +1,7 @@
 # Go Web Examples
 
 [Go Web Examples](https://gowebexamples.com/) (中文翻译版，在线阅读地址：http://books.studygolang.com/gowebexamples/)
-提供了简单易懂的代码片段，介绍如何在 go 中进行 web 开发, 这是受 [Go By Example](http://gobyexample.com/）(中文翻译版，在线阅读地址：http://books.studygolang.com/gobyexample/)启发，它对于了解该语言的基础知识有很大帮助。
+提供了简单易懂的代码片段，介绍如何在 go 中进行 web 开发, 这是受 [Go By Example](http://gobyexample.com/) (中文翻译版，在线阅读地址：http://books.studygolang.com/gobyexample/)启发，它对于了解该语言的基础知识有很大帮助。
 
 ## Examples
 
